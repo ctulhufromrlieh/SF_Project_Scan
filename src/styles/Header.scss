@@ -1,0 +1,7 @@
+@import "consts.scss";
+
+.header {    
+    height: 93px;
+    border: 1px purple solid;
+    @include logo(true);
+}

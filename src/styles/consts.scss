@@ -1,0 +1,37 @@
+$color1: #029491;
+$color2: #000000;
+$color3: #FFFFFF;
+$color4: #FFB64F;
+$color5: #7CE3E1;
+$color6: #5970FF;
+
+$fontname1: "Ferry";
+$fontname2: "Inter";
+
+$logo_background_size: 141px 141px;
+$logo_header_url: "../img/logo-header-mobile.png";
+$logo_footer_url: "../img/logo-footer-mobile.png";
+$is_mobile: false;
+
+@media screen and (min-width: 400px)  {
+    $is_mobile: true;
+
+    $logo_background_size: 111px 111px;
+    $logo_header_url: "../img/logo-header-desktop.png";
+    $logo_footer_url: "../img/logo-footer-desktop.png";
+}
+
+
+@mixin logo($is_header){
+    background-size: $logo_background_size;
+    background-repeat: no-repeat;
+    @if $is_header{
+        background-image: url($logo_header_url);
+        background-position: 60px -24px;
+        
+    } @else {
+        background-image: url($logo_footer_url);
+        background-position: 60px -2px;
+    }  
+
+}
