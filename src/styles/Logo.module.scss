@@ -1,0 +1,9 @@
+@import "consts.scss";
+
+.header_logo {
+    @include logo(true);
+}
+
+.footer_logo {
+    @include logo(false);
+}

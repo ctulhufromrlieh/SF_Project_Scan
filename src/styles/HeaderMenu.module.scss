@@ -1,0 +1,18 @@
+// @import "consts.scss";
+
+.header_menu {   
+    display:flex; 
+    flex-direction:row;      
+    // flex-grow: 1;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-menu ol {
+    list-style: none;
+}
+
+// .header-menu ol li {
+//     display: inline;
+//     margin: 0px 25px;
+// }

@@ -21,7 +21,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: [".js", ".jsx", ".json", ".ts", ".tsx", ".scss"]
+        extensions: [".js", ".jsx", ".json", ".ts", ".tsx", ".scss", ".png"]
     },
     module: {
         rules: [
@@ -52,6 +52,14 @@ module.exports = {
                     // },  
                     // Compiles Sass to CSS
                     "sass-loader",
+                ],
+            },
+            {
+                test: /\.module.(png|jpe?g|gif)$/i,
+                use: [
+                  {
+                    loader: 'file-loader',
+                  },
                 ],
             },
         ]

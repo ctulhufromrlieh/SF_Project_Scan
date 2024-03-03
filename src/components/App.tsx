@@ -2,12 +2,15 @@ import * as React from "react";
 
 import { connect } from "react-redux"
 import Header from "./Header";
+import Footer from "./Footer";
 
 class App extends React.Component<any, any> {
     render(){
         return (
             <>
                 <Header></Header>
+                <main>Main part</main>
+                <Footer></Footer>
             </>
         );
     }

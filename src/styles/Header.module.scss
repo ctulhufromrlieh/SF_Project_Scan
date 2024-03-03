@@ -1,7 +1,28 @@
-@import "consts.scss";
+// @import "consts.scss";
 
-.header1 {    
-    height: 93px;
-    border: 1px red solid;
-    @include logo(true);
+.header-wrapper {
+    visibility: hidden;
 }
+
+.header {    
+    height: 93px;
+    border: 1px purple solid;
+    // @include logo(true);
+
+    display:flex; 
+    flex-direction:row;      
+    // flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+// .header_logo {
+//     @include logo(true);
+//     // @if ($is_mobile){
+//     //     margin-left: 14px;
+//     // }@else{
+//     //     margin-left: 60px;
+//     // }
+    
+//     height: 100%;
+// }

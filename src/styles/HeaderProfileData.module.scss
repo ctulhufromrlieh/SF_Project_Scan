@@ -1,0 +1,77 @@
+@mixin profile_data(){
+    background-color: rgba(217, 217, 217, 0.3);
+    border-radius: 5px;
+
+    width: 175px;
+    height: 63px;
+    margin-right: 128px;    
+}
+
+.profile_data_loading {
+    // border: 1px purple solid;
+    // @include logo(true);
+
+    // display:flex; 
+    // flex-direction:row;      
+    // // flex-grow: 1;
+    // justify-content: space-between;
+    // align-items: center;    
+
+    // // height: 100%;
+    // background-color: rgba(217, 217, 217, 0.3);
+    // border-radius: 5px;
+
+    // width: 175px;
+    // height: 63px;
+    // margin-right: 128px;
+    @include profile_data();
+    background-image: url("../img/profile-data-loading.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.profile_data_loaded {
+    @include profile_data();
+    // background-image: url("../img/profile-data-loading.png");
+    // background-repeat: no-repeat;
+    // background-position: center;
+    display:flex; 
+    flex-direction:row;      
+    justify-content: center;
+    align-items: center;  
+    // text-align: center;
+    // vertical-align: middle;
+}
+
+.profile_data_caption {
+    font-size: 12px;
+    font-family: "Inter";
+    color: rgba(0, 0, 0, 0.4);
+    text-align: right;
+}
+
+.profile_data_count {
+    font-size: 14px;
+    font-family: "Inter";
+    color: rgba(0, 0, 0, 1);
+}
+
+.profile_data_count_lim{
+    font-size: 14px;
+    font-family: "Inter";
+    color: #8AC540;
+}
+
+// .profile_data_left {
+//     display:flex; 
+//     flex-direction:column;      
+//     justify-content: space-between;
+//     align-items: center;        
+// }
+
+// .profile_data_right {
+//     display:flex; 
+//     flex-direction:column;      
+//     justify-content: space-between;
+//     align-items: center;        
+// }
