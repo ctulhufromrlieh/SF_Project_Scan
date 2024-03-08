@@ -1,4 +1,4 @@
-// @import "consts.scss";
+@import "consts.scss";
 
 .header_menu {   
     display:flex; 
@@ -8,9 +8,16 @@
     align-items: center;
 }
 
-.header-menu ol {
-    list-style: none;
+@media screen and (max-width: $mobile_width)  {
+    .header_menu {   
+        visibility: hidden;
+        display:none
+    }    
 }
+
+// .header-menu ol {
+//     list-style: none;
+// }
 
 // .header-menu ol li {
 //     display: inline;

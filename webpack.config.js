@@ -17,7 +17,8 @@ module.exports = {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "POST, PUT, PATCH, GET, DELETE, OPTIONS",           
             "Access-Control-Allow-Headers": "Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization"
-        }
+        },
+        historyApiFallback: true,
     },
 
     resolve: {
@@ -55,7 +56,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.module.(png|jpe?g|gif)$/i,
+                test: /\.module.(png|jpe?g|gif|svg)$/i,
                 use: [
                   {
                     loader: 'file-loader',

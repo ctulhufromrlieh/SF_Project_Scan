@@ -1,3 +1,11 @@
+@font-face {
+	font-family: 'Ferry';
+	src: url("../fonts/Ferry-Black.ttf");
+	font-weight: 900;
+	font-style: normal;
+}
+
+
 $color1: #029491;
 $color2: #000000;
 $color3: #FFFFFF;
@@ -91,6 +99,8 @@ $logo_footer_mobile_url: "../img/logo-footer-mobile.png";
 $logo_header_desktop_url: "../img/logo-header-desktop.png";
 $logo_footer_desktop_url: "../img/logo-footer-desktop.png";
 
+$mobile_width: 960px;
+
 
 @mixin logo($is_header){
     // $logo_header_background_size: 111px 111px;
@@ -106,6 +116,7 @@ $logo_footer_desktop_url: "../img/logo-footer-desktop.png";
     border: solid lime 1px;
     
     margin-left: 14px;
+    // margin-left: 60px;
 
     @if $is_header{
         background-image: url($logo_header_mobile_url);
@@ -116,7 +127,7 @@ $logo_footer_desktop_url: "../img/logo-footer-desktop.png";
         height: 111px;
     }  
 
-    @media screen and (min-width: 400px)  {
+    @media screen and (min-width: $mobile_width)  {
     // @media (min-width: 800px)  {
 
         @if $is_header{
@@ -141,6 +152,7 @@ $logo_footer_desktop_url: "../img/logo-footer-desktop.png";
         // $border_sign: solid fuchsia 1px;
         border: solid fuchsia 1px;;
 
+        // margin-left: 14px;
         margin-left: 60px;
     }
 

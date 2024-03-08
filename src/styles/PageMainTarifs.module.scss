@@ -1,0 +1,38 @@
+@import "consts.scss";
+
+.main {
+    display: flex; 
+    flex-direction: row;      
+    justify-content: space-between;
+    align-items: center; 
+    flex-wrap: wrap;
+}
+
+// @mixin elem(){
+//     width: 335px;
+//     height: 512px;
+
+//     @media screen and (min-width: $mobile_width)  {
+//         width: 415px;
+//         height: 540px;
+//     }
+
+    
+// }
+
+// // .elem {
+// //     width: 335px;
+// //     height: 512px;
+// // }
+
+// @media screen and (min-width: $mobile_width)  {
+//     // .elem {   
+//     //     width: 415px;
+//     //     height: 540px;
+//     // }    
+
+//     @mixin elem(){
+//         width: 335px;
+//         height: 512px;
+//     }    
+// }

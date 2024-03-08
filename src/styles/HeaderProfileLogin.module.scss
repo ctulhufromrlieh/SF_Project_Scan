@@ -1,0 +1,51 @@
+
+@import "consts.scss";
+
+.header_profile_login {    
+    // height: 93px;
+    // border: 1px purple solid;
+    // @include logo(true);
+
+    display:flex; 
+    flex-direction:row;      
+    // flex-grow: 1;
+    // justify-content: space-around;
+    align-items: center;
+
+    font-size: 14px;
+    font-family: "Inter";
+    // color: rgba(0, 0, 0, 0.4);
+
+    margin-right: 60px;
+}
+
+.header_profile_login_link{
+    // color: black;
+    color: rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+}
+
+.header_profile_login_border{
+    width: 2px;
+    height: 26px;
+    background-color: $color1;
+    margin-left: 18px;
+    margin-right: 20px;
+}
+
+.header_profile_login_button {
+    background-color: #7CE3E1;
+    border: none;
+    border-radius: 7px;
+    padding: 4px 10px 5px 12px;
+
+    font-size: 14pt;
+    font-family: "Inter";
+    font-weight: 500;    
+}
+
+// @media screen and (max-width: $mobile_width)  {
+//     .header_profile_login {   
+//         visibility: hidden;
+//     }    
+// }

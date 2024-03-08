@@ -1,0 +1,87 @@
+@import "consts.scss";
+
+.overview {
+    display: flex; 
+    flex-direction: row;      
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 0px 60px 0px 60px;
+}
+
+.overview h1 {
+    font-family: $fontname1;
+    font-size: 60px;
+}
+
+.overview p {
+    font-family: $fontname2;
+    font-size: 20px;
+}
+
+.overview div {
+    width: 50%;
+}
+
+.overview button {
+    background-color: #5970FF;
+    border-radius: 5px;
+    width: 335px;
+    height: 59px;
+    font-family: $fontname2;
+    font-size: 22px;
+    color: #FFFFFF;
+    border: none;
+}
+
+.overview_img {
+    background-image: url("../img/main/overview_s.png");
+    width: 347px;
+    height: 327px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media screen and (min-width: $mobile_width)  {
+    .overview_img {   
+        background-image: url("../img/main/overview_l.png");
+        width: 629px;
+        height: 620px;
+    }    
+}
+
+.why_we {
+    margin: 119px 43px 0 51px;
+}
+
+.why_we h2 {
+    font-family: $fontname1;
+    font-size: 45px;
+}
+
+.before_tarifs {
+    background-image: url("../img/main/before-tarifs-s.svg");
+    width: 361px; 
+    height: 393px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    margin: 70px 82px 108px 51px;
+}
+
+@media screen and (min-width: $mobile_width)  {
+    .before_tarifs { 
+        background-image: url("../img/main/before-tarifs-l.svg");
+        width: 1307px;
+        height: 576px;
+    }    
+}
+
+.tarifs {
+    margin: 119px 43px 118px 51px;
+}
+
+.tarifs h2 {
+    font-family: $fontname1;
+    font-size: 45px;
+}

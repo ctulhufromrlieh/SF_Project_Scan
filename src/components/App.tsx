@@ -1,15 +1,71 @@
 import * as React from "react";
 
 import { connect } from "react-redux"
+import { Route, Routes, Link } from "react-router-dom";
+
 import Header from "./Header";
 import Footer from "./Footer";
+import PageMain from "./PageMain";
+import PageLogin from "./PageLogin";
+
+// class App extends React.Component<any, any> {
+//     render(){
+//         return (
+//             <>
+//                 <Header></Header>
+//                 <main>
+//                     {/* Main part */}
+//                 {/* <nav>
+//                     <Link to="/">Home</Link>
+//                     <Link to="/users">Users</Link>
+//                 </nav> */}
+//                 <Routes>
+//                     {/* <Route path="/users/:id" element={<User/>}>
+//                     </Route>
+//                     <Route path="/users/" element={<Users/>}>
+//                     </Route> */}
+//                     <Route path="/" element={<PageMain/>}>                        
+//                     </Route>
+//                 </Routes>
+//                 </main>
+//                 <Footer></Footer>
+//             </>
+//         );
+//     }
+// }
 
 class App extends React.Component<any, any> {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+          mobileMenuShow: false,
+        };
+    }
+
+    setMobileMenuShow(isShow: boolean){
+        console.log(`setMobileMenuShow(${isShow})`);
+        this.setState({mobileMenuShow: isShow});
+    }
+
+    showMobileMenu(){
+        this.setMobileMenuShow(true);
+    }
+
+    hideMobileMenu(){
+        this.setMobileMenuShow(false);
+    }
+
     render(){
         return (
             <>
-                <Header></Header>
-                <main>Main part</main>
+                <Header showMobileMenu={this.showMobileMenu}></Header>
+                <main>
+                    <Routes>
+                        <Route path="/login" element={<PageLogin />} />
+                        <Route path="/" element={<PageMain hideMobileMenu={this.hideMobileMenu} />} />
+                    </Routes>
+                </main>
                 <Footer></Footer>
             </>
         );

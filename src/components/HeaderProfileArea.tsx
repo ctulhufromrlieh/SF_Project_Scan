@@ -4,6 +4,7 @@ import * as React from "react";
 import headerProfileAreaStyle from "../styles/HeaderProfileArea.module.scss";
 import HeaderProfileData from "./HeaderProfileData";
 import HeaderProfileUser from "./HeaderProfileUser";
+import HeaderProfileLogin from "./HeaderProfileLogin";
 
 class HeaderProfileArea extends React.Component<any, any> {
     render(){
@@ -19,12 +20,13 @@ class HeaderProfileArea extends React.Component<any, any> {
                     <button className={headerLoginAreaStyle.header_login_area_button}>Войти</button> */}
                 </div>;
         } else {
-            areaElem = 
-                <div className={headerProfileAreaStyle.header_login_area}>
-                    <a className={headerProfileAreaStyle.header_login_area_link} href="/login/">Зарегистрироваться</a>
-                    <div className={headerProfileAreaStyle.header_login_area_border}></div>
-                    <button className={headerProfileAreaStyle.header_login_area_button}>Войти</button>
-                </div>
+            areaElem = <HeaderProfileLogin></HeaderProfileLogin>;
+            // areaElem = 
+                // <div className={headerProfileAreaStyle.header_login_area}>
+                //     <a className={headerProfileAreaStyle.header_login_area_link} href="/login/">Зарегистрироваться</a>
+                //     <div className={headerProfileAreaStyle.header_login_area_border}></div>
+                //     <button className={headerProfileAreaStyle.header_login_area_button}>Войти</button>
+                // </div>
         };
 
         return areaElem;
