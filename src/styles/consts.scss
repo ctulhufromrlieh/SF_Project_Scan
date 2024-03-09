@@ -16,84 +16,6 @@ $color6: #5970FF;
 $fontname1: "Ferry";
 $fontname2: "Inter";
 
-
-// // $logo_header_background_size: 111px 93px;
-// // $logo_footer_background_size: 111px 99px;
-// $logo_header_background_size: 111px 111px;
-// $logo_footer_background_size: 111px 111px;
-// $logo_size_w: 111px;
-// $logo_size_h: 111px;
-// $logo_header_url: "../img/logo-header-mobile.png";
-// $logo_footer_url: "../img/logo-footer-mobile.png";
-// $is_mobile: false;
-
-// $border_sign: solid lime 1px;
-
-// // @media screen and (min-width: 400px)  {
-// @media (max-width: 900px)  {
-//     $is_mobile: true;
-//     $logo_size_w: 141px;
-
-//     $border_sign: solid fuchsia 1px;
-
-//     // $logo_header_background_size: 141px 93px;
-//     // $logo_footer_background_size: 141px 137px;
-//     $logo_header_background_size: 141px 141px;
-//     $logo_footer_background_size: 141px 141px;
-//     $logo_size_w: 141px;
-//     $logo_size_h: 141px;
-
-//     // $logo_background_size: 111px 111px;
-//     $logo_header_url: "../img/logo-header-desktop.png";
-//     $logo_footer_url: "../img/logo-footer-desktop.png";
-
-    
-// }
-
-
-// @mixin logo($is_header){
-//     // background-size: $logo_background_size;
-//     background-repeat: no-repeat;
-//     // object-fit: none;
-//     width: $logo_size_w;
-//     height: $logo_size_h;
-//     border: $border_sign;
-//     @if $is_header{
-//         // background-size: $logo_header_background_size;
-//         background-size: contain;
-//         background-image: url($logo_header_url);
-//         // background-position: 60px -24px;
-        
-//     } @else {
-//         // background-size: $logo_footer_background_size;
-//         background-size: contain;
-//         background-image: url($logo_footer_url);
-//         // background-position: 60px -2px;
-//     }  
-
-// }
-
-// // @media screen and (min-width: 400px)  {
-// @media screen and (min-width: 400px)  {
-//     $is_mobile: true;
-//     $logo_size_w: 141px;
-
-//     $border_sign: solid fuchsia 1px;
-
-//     // $logo_header_background_size: 141px 93px;
-//     // $logo_footer_background_size: 141px 137px;
-//     $logo_header_background_size: 141px 141px;
-//     $logo_footer_background_size: 141px 141px;
-//     $logo_size_w: 141px;
-//     $logo_size_h: 141px;
-
-//     // $logo_background_size: 111px 111px;
-//     $logo_header_url: "../img/logo-header-desktop.png";
-//     $logo_footer_url: "../img/logo-footer-desktop.png";
-
-    
-// }
-
 $logo_header_mobile_url: "../img/logo-header-mobile.png";
 $logo_footer_mobile_url: "../img/logo-footer-mobile.png";
 $logo_header_desktop_url: "../img/logo-header-desktop.png";
@@ -103,20 +25,10 @@ $mobile_width: 960px;
 
 
 @mixin logo($is_header){
-    // $logo_header_background_size: 111px 111px;
-    // $logo_footer_background_size: 111px 111px;
-    // $logo_size_w: 111px;
-    // $logo_size_h: 111px;
-    // width: 111px;
     min-width: 111px;
-    // height: 111px;
-    // $logo_header_url: "../img/logo-header-mobile.png";
-    // $logo_footer_url: "../img/logo-footer-mobile.png";
-    // $border_sign: solid lime 1px;
     border: solid lime 1px;
     
     margin-left: 14px;
-    // margin-left: 60px;
 
     @if $is_header{
         background-image: url($logo_header_mobile_url);
@@ -128,7 +40,6 @@ $mobile_width: 960px;
     }  
 
     @media screen and (min-width: $mobile_width)  {
-    // @media (min-width: 800px)  {
 
         @if $is_header{
             background-image: url($logo_header_desktop_url);
@@ -138,41 +49,13 @@ $mobile_width: 960px;
             height: 141px;
         }  
 
-        // $logo_header_background_size: 141px 141px;
-        // $logo_footer_background_size: 141px 141px;
-        // $logo_size_w: 141px;
-        // $logo_size_h: 141px;
-        // width: 141px;
         min-width: 141px;
-        // height: 141px;
-    
-        // $logo_header_url: "../img/logo-header-desktop.png";
-        // $logo_footer_url: "../img/logo-footer-desktop.png";
-
-        // $border_sign: solid fuchsia 1px;
         border: solid fuchsia 1px;;
 
-        // margin-left: 14px;
         margin-left: 60px;
     }
 
     background-repeat: no-repeat;
     background-size: contain;
-    // width: $logo_size_w;
-    // height: $logo_size_h;
-    // border: $border_sign;
-    // @if $is_header{
-    //     // background-size: $logo_header_background_size;
-    //     // background-size: contain;
-    //     background-image: url($logo_header_url);
-    //     // background-position: 60px -24px;
-        
-    // } @else {
-    //     // background-size: $logo_footer_background_size;
-    //     // background-size: contain;
-    //     background-image: url($logo_footer_url);
-    //     // background-position: 60px -2px;
-    // }  
-
 }
 

@@ -1,0 +1,34 @@
+@import "consts";
+
+@mixin elem($color) {
+    // margin: 8px 15px auto 15px;
+
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    text-align: center;
+
+    color: $color;
+    // border: 1px solid red;
+
+    cursor: pointer;
+
+    hr {
+        color: $color;
+        // line-height: 2px;
+        // border: 1px solid purple
+        margin: 8px 0 0 0;
+    }
+}
+
+.elem_checked {
+    @include elem($color1);
+    // border: 1px solid red;
+}
+
+.elem_unchecked {
+    @include elem(#C7C7C7);
+    // border: 1px solid blue;
+}
