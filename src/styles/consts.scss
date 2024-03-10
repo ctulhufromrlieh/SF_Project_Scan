@@ -59,3 +59,61 @@ $mobile_width: 960px;
     background-size: contain;
 }
 
+@mixin input(){
+    border-radius: 5px;
+    // border: 1px solid #C7C7C7;
+    padding-left: 19px;
+    height: 43px;
+    // color: #000000;
+    // width: 376px;
+    // width: 300px;
+}
+
+.input_normal {
+    @include input();
+    border: 1px solid #C7C7C7;
+    color: #000000;
+
+    border: 3px solid teal;
+}
+
+.input_error {            
+    @include input();
+    // border: 1px solid #FF5959;
+    color: #FF5959;
+    box-shadow: 0px 0px 10px 0px #FF595933;
+
+    border: 3px solid lime;
+}
+
+.input_error::placeholder {
+    color: #FF5959;
+}
+
+@mixin error_msg(){
+    font-family: $fontname2;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #FF5959;
+
+    margin: 6px 0px -6px 0px;
+    
+    height: 0px;
+
+    overflow: visible;
+    
+    // border: 1px solid blue;
+}
+
+.error_msg_visible {
+    @include error_msg();
+    visibility: visible;
+}
+
+.error_msg_hidden {
+    @include error_msg();
+    visibility: hidden;
+}
