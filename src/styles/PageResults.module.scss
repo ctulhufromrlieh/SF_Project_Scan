@@ -1,0 +1,148 @@
+@import "consts";
+
+.main {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        // justify-content: flex-start;
+        flex-wrap: wrap;
+        
+        margin: 20px 17px 0 14px;
+
+        border: 1px solid purple;
+
+        @media screen and (min-width: $mobile_width)  {
+            margin: 25px 104px 0 60px;
+        }        
+
+        .title_left {
+            display: flex;
+            flex-direction: column;
+            // justify-content: space-between;
+
+            margin-top: 0;
+            gap: 19px;
+
+            border: 1px solid gold;
+            max-width: 300px;
+
+            h1 {
+                font-family: $fontname1;
+                font-size: 28px;
+                font-weight: 900;
+                line-height: 34px;
+                letter-spacing: 0.01em; 
+                
+                // max-width: 300px;
+            }
+
+            h2 {
+                font-family: $fontname2;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 22px;
+                letter-spacing: 0.02em;
+
+                // max-width: 300px;
+            }
+
+            @media screen and (min-width: $mobile_width)  {
+                margin-top: 44px;
+                gap: 25px;
+                max-width: 500px;
+
+                h1 {
+                    font-size: 40px;
+                    line-height: 48px;
+                    letter-spacing: 0.03em; 
+
+                    // max-width: 817px;
+                }
+                h2 {
+                    font-size: 20px;
+                    line-height: 24px;
+                    letter-spacing: 0.02em;
+
+                    // max-width: 534px;
+                }
+            }
+        }
+
+        .img_l {
+            display: none;
+        }
+
+        .img_s {
+            display: block;
+        }
+
+        @media screen and (min-width: $mobile_width)  {
+            // justify-content: space-between;
+            // border: 2px yellow solid;
+            // margin: 24px 82px 0 60px;
+
+            .img_l {
+                display: block;
+            }
+
+            .img_s {
+                display: none;
+            }
+        }
+    }
+
+    .summary {
+
+        margin: 0;
+        @media screen and (min-width: $mobile_width)  {
+            margin: 0 43px 0 51px;
+        }
+
+
+        h1 {
+            font-family: $fontname1;
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 34px;
+            letter-spacing: 0.01em;
+            // text-align: left;
+            color: #000000;
+
+            margin-left: 14px;
+
+            @media screen and (min-width: $mobile_width)  {
+                font-size: 30px;
+                line-height: 36px;
+                letter-spacing: 0.02em;
+
+                margin-left: 9px;
+            }
+        }
+
+        .found {
+            font-family: $fontname2;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 22px;
+            letter-spacing: 0.01em;
+            // text-align: left;    
+            
+            color: #949494;
+
+            margin-left: 14px;
+
+            @media screen and (min-width: $mobile_width)  {
+
+                margin-left: 9px;
+            }
+        }
+
+        .summary_table {
+
+        }
+    }
+}

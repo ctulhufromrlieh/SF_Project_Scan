@@ -20,49 +20,37 @@ import btnLeft from "../img/main/why-we-btn-left.module.svg";
 import btnRight from "../img/main/why-we-btn-right.module.svg";
 
 function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ 
-            ...style, 
-            display: "block", 
-            // top: "0px",
-            top: "93px",
-            // background: "red",
-            // backgroundImage: btnRight,
-        }}
-        onClick={onClick}
-      >
-        <img src={btnRight} alt={"Next page"} />
-      </div>
-    );
-  }
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ 
+        ...style, 
+        display: "block", 
+        top: "93px",
+      }}
+      onClick={onClick}
+    >
+      <img src={btnRight} alt={"Next page"} />
+    </div>
+  );
+}
   
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ 
-            ...style, 
-            display: "block", 
-            // background: "green" 
-            // backgroundImage: {btnLeft},
-            // background: {btnLeft},
-            // width: "39px",
-            // height: "39px",
-            // border: "1px red solid"
-            // verticalAlign: "middle",
-            // marginTop: "auto",
-            // marginBottom: "auto",
-            top: "93px",
-        }}
-        onClick={onClick}>
-            <img src={btnLeft} alt={"Previous page"} />
-        </div>
-    );
-  }
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ 
+          ...style, 
+          display: "block", 
+          top: "93px",
+      }}
+      onClick={onClick}>
+          <img src={btnLeft} alt={"Previous page"} />
+      </div>
+  );
+}
 
 class PageMainCarousel extends React.Component<any, any> {
     render(){

@@ -11,7 +11,7 @@ class HeaderProfileUser extends React.Component<any, any> {
                 <div className={headerProfileUserStyle.user_data}>
                     <div className={headerProfileUserStyle.user_data_left}>
                         {/* <p>123</p> */}
-                        <p className={headerProfileUserStyle.user_name}>Иван И.</p>
+                        <p className={headerProfileUserStyle.user_name}>Алексей А.</p>
                         <a className={headerProfileUserStyle.logout_link}>Выйти</a>
                     </div>
                     <img src={profile_user_img} alt="Profile user image" />

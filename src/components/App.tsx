@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import PageMain from "./PageMain";
 import PageLogin from "./PageLogin";
 import PageSearch from "./PageSearch";
+import PageResults from "./PageResults";
 
 // class App extends React.Component<any, any> {
 //     render(){
@@ -63,6 +64,7 @@ class App extends React.Component<any, any> {
                 <Header showMobileMenu={this.showMobileMenu}></Header>
                 <main>
                     <Routes>
+                        <Route path="/results" element={<PageResults />} />
                         <Route path="/search" element={<PageSearch />} />
                         <Route path="/login" element={<PageLogin />} />
                         <Route path="/" element={<PageMain hideMobileMenu={this.hideMobileMenu} />} />
