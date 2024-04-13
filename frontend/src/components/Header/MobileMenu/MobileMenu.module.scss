@@ -1,0 +1,47 @@
+@import "../../../styles/commonTypes.scss";
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 375px;
+    border: 1px solid yellow;
+}
+
+.menu_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 28px 0 14px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.menu_close_btn {
+    background-image: url("../../../img/mobile-menu-close.svg");
+    background-color: transparent;
+    // background-size: contain;
+    width: 25px;
+    height: 25px;
+    border: none;
+    cursor: pointer;
+    // opacity: 0;
+}
+
+.menu_list {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu_item {
+    font-family: $fontname2;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.36px;
+    letter-spacing: 0.01em;
+    color: white;
+
+    text-decoration: none;
+}

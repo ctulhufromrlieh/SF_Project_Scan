@@ -1,0 +1,33 @@
+@import "../../../styles/commonTypes.scss";
+
+.main{
+    padding: 25px 0 25px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+    box-sizing: border-box;
+    
+    // border: 1px solid orange;
+}
+
+@mixin textblock($fontSize, $lineHeight) {
+    font-family: $fontname2;
+    font-size: $fontSize;
+    font-weight: 400;
+    line-height: $lineHeight;
+    color: white;
+
+    p {
+        text-align: right;
+    }
+}
+
+.textblock1 {
+    @include textblock(14px, 16.94px);
+}
+
+.textblock2 {
+    @include textblock(12px, 14.52px);
+}
