@@ -11,7 +11,11 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 0 45px 0 60px;
+    padding: 0 19px 0 18px;
+
+    @media screen and (min-width: $mobile_width)  {
+        padding: 0 45px 0 60px;
+    }
 }
 
 .footer img {

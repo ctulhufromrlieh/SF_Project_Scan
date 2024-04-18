@@ -1,5 +1,5 @@
 import React from "react";
-import PageMain from "../components/pages/PageMain";
+import PageMain from "../components/pages/PageMain/PageMain";
 import PageLogin from "../components/pages/PageLogin";
 import { RouteData } from "../types/common";
 

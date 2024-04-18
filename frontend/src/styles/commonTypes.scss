@@ -37,3 +37,21 @@ $fontname2: "Inter";
         display: none;
     }
 }
+
+@mixin sub_heading_description {
+    font-family: $fontname2;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    font-size: 18px;
+    line-height: 21.78px;
+
+    @media screen and (min-width: $mobile_width)  {
+        font-size: 20px;
+        line-height: 24.2px;
+    }
+}
+
+@mixin backward {
+    position: relative;
+    z-index: -1;
+}

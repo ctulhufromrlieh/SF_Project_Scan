@@ -40,11 +40,13 @@ const Header: React.FC = () => {
                 : 
                 <HeaderLogin />
             }
-            <button className={classes.menu_button} onClick={() => setMobileMenuVisible(true)}></button>            
 
-            <MyModal visible={mobileMenuVisible} setVisible={setMobileMenuVisible} contentClassName={classes.menu_background}>
-                <MobileMenu setVisible={setMobileMenuVisible} />
-            </MyModal>
+            <div className={commonClasses.only_mobile}>
+                <button className={classes.menu_button} onClick={() => setMobileMenuVisible(true)}></button>            
+                <MyModal visible={mobileMenuVisible} setVisible={setMobileMenuVisible} contentClassName={classes.menu_background}>
+                    <MobileMenu setVisible={setMobileMenuVisible} />
+                </MyModal>
+            </div>                
         </div>
     );
 }

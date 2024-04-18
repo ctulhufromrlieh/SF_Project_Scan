@@ -5,9 +5,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 60px 0 60px;
+    padding: 0 26px 0 14px;
 
     border: 1px solid red;
+
+    @media screen and (min-width: $mobile_width)  {
+        padding: 0 60px 0 60px;
+    }
 }
 
 .header img {

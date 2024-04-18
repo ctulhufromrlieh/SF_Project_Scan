@@ -1,0 +1,27 @@
+@import "../../../../styles/commonTypes.scss";
+
+// .carousel_container {
+//     margin: 32px 0 0 0;
+//     @media screen and (min-width: $mobile_width)  {
+//         margin: 109px 43px 0 51px;
+//     }
+// }
+
+.carousel_container {
+    margin: 32px 39px 0 24px;
+    @media screen and (min-width: $mobile_width)  {
+        margin: 70px 86px 0 34px;
+    }
+}
+
+.carousel {
+
+}
+
+.custom_arrow_next {
+
+}
+
+.custom_arrow_prev {
+
+}
