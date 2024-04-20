@@ -4,7 +4,7 @@ import classes from "./PageMainCarousel.module.scss";
 import sliderArrowNext from "../../../../img/pages/main/slider-arrow-next.module.svg";
 import sliderArrowPrev from "../../../../img/pages/main/slider-arrow-prev.module.svg";
 
-import PageMainCarouselItem, { PageMainCarouselItemProps } from "./PageMainCarousel/PageMainCarouselItem";
+import PageMainCarouselItem, { PageMainCarouselItemProps } from "./PageMainCarouselItem/PageMainCarouselItem";
 // import { Carousel } from "react-responsive-carousel";
 // import "react-responsive-carousel/lib/styles/carousel.css";
 

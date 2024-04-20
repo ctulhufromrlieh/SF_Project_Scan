@@ -3,8 +3,10 @@
 
 .page {
     max-width: 375px;
+    padding-bottom: 43px;
     @media screen and (min-width: $mobile_width)  {
         max-width: 1440px;
+        padding-bottom: 118px;
     }
 
     border: 1px solid greenyellow;
@@ -102,6 +104,16 @@
     margin-top: 32px;
     @media screen and (min-width: $mobile_width)  {
         margin-top: 70px;
+    }
+}
+
+.our_tarifs {
+    // display: flex;
+    margin: 80px 26px 0 14px;
+    // flex-wrap: wrap;
+    @media screen and (min-width: $mobile_width)  {
+        margin: 107px 60px 0 60px;
+        // flex-wrap: nowrap;
     }
 }
 

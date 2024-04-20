@@ -1,7 +1,7 @@
 @import "../../../styles/commonTypes.scss";
 
 .btn_common {
-    border-radius: 5px;
+    // border-radius: 5px;
     border: none;
 
     font-family: $fontname2;
@@ -11,6 +11,14 @@
 
     // width: 355px;
     // height: 59px;
+}
+
+.btn_border_radius_normal {
+    border-radius: 5px;
+}
+
+.btn_border_radius_large {
+    border-radius: 10px;
 }
 
 .btn_size_small {
@@ -61,4 +69,9 @@
 .btn_color_gray_black {
     background-color: #D2D2D2;
     color: $color_black;
+}
+
+.btn_color_sea_white {
+    background-color: #3BA5E0;
+    color: $color_white;
 }

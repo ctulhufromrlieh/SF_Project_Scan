@@ -1,0 +1,274 @@
+@import "../../../../../styles/commonTypes.scss";
+
+.item {
+    // border: 1px solid red;
+
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px #00000033;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 335px;
+    height: 512px;
+    @media screen and (min-width: $mobile_width)  {
+        width: 415px;
+        height: 540px;
+    }
+    
+    .header {
+        // border: 1px solid orange;
+        // border: 1px solid purple;
+        // margin-top: 10px;
+
+        display: flex;
+        justify-content: space-between;
+        // align-items: center;
+
+        // border-radius: 10px 10px 0px 0px;
+        border-radius: 9px 9px 0px 0px;
+
+        width: 335px;
+        // height: 132px;
+        min-height: 132px;
+        // visibility: hidden;
+        @media screen and (min-width: $mobile_width)  {
+            width: 415px;
+            // height: 132px;
+        }
+
+        .header_textblock {
+            // border: 1px solid teal;
+            z-index: 2;
+
+            .caption {
+                font-family: $fontname2;
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 24.2px;
+                letter-spacing: 0.01em;
+    
+                padding: 30px 24px 0 24px;
+                @media screen and (min-width: $mobile_width)  {
+                    font-size: 30px;
+                    line-height: 36.31px;
+    
+                    padding: 30px 30px 0 30px;
+                }
+            }
+    
+            .subcaption {
+                font-family: $fontname2;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 21.78px;
+                letter-spacing: 0.01em;
+                text-align: left;
+                
+    
+                padding: 22px 24px 0 24px;
+                @media screen and (min-width: $mobile_width)  {
+                    font-size: 18px;
+                    line-height: 21.78px;
+    
+                    padding: 10px 30px 0 30px;
+                }
+            }
+        }
+
+        .header_image_desktop {
+            @include only_desktop_flex;
+            @include backward;
+            z-index: 1;
+
+            align-items: center;
+            padding-right: 8px;
+            margin-left: -90px;
+            height: 100%;
+
+            // border: 1px solid blue;
+
+            // display: flex;
+            // align-items: center;
+            // justify-content: center;
+            // padding-top: 50%;
+            // padding-bottom: 50%;
+
+            img {
+                // border: 1px solid purple;
+            }
+
+            // display: flex;
+            // align-items: center;
+            // justify-content: center;
+
+            // max-width: 1px;
+            // overflow-x: visible
+        }
+
+        .header_image_mobile {
+            @include only_mobile_flex;
+            @include backward;
+
+            padding-right: 8px;
+            margin-left: -90px;
+            height: 100%;
+
+            // border: 1px solid blue;
+
+            img {
+                // border: 1px solid purple;
+            }
+
+            // max-width: 1px;
+            // overflow-x: visible
+        }
+    }
+
+    .main {
+        display: block;
+        position: relative;
+        height: 100%;
+
+        // border: 1px solid goldenrod;
+
+        padding: 20px 0 0 24px;
+        @media screen and (min-width: $mobile_width)  {
+            padding: 33px 0 0 30px;
+        }
+
+        .current_tarif_mark {
+            @include only_desktop_flex;
+            width: 134px;
+            height: 24px;
+
+            justify-content: center;
+            align-items: center;
+
+            border: none;
+            border-radius: 10px;
+            background-color: #3BA5E0;
+            color: $color_white;
+
+            position: absolute;
+            top: 12px;
+            right: 10px;
+        }
+
+        .cost_container {
+            display: flex;
+            // justify-content: flex-start;
+            align-items: center;
+            
+            // padding: 20px 0 0 24px;
+            // @media screen and (min-width: $mobile_width)  {
+            //     padding: 33px 0 0 30px;
+            // }
+        }
+
+        .cost {
+            font-family: $fontname2;
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 36.31px;
+            letter-spacing: 0.01em;
+
+            // padding: 20px 0 0 24px;
+            // @media screen and (min-width: $mobile_width)  {
+            //     padding: 33px 0 0 30px;
+            // }
+        }
+
+        .oldCost {
+            font-family: $fontname2;
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 30.26px;
+            letter-spacing: 0.01em;
+            text-decoration: line-through;
+            opacity: 0.5;
+            
+            margin-left: 10px;
+            @media screen and (min-width: $mobile_width)  {
+                margin-left: 19px;
+            }
+        }
+
+        .cost_partial_container {
+            // padding: 10px 30px 0 24px;
+            // @media screen and (min-width: $mobile_width)  {
+            //     padding: 13px 10px 0 30px;
+            // }
+
+            // border: 1px solid orange;
+
+            .cost_partial {
+                font-family: $fontname2;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 21.78px;
+                letter-spacing: 0.01em;
+
+                min-height: 22px;
+            }
+        }
+
+        .tarif_features_caption {
+            font-family: $fontname2;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 21.78px;
+            letter-spacing: 0.01em;
+
+            // border: 1px solid lime;
+
+            margin-top: 36px;
+
+            @media screen and (min-width: $mobile_width)  {
+                font-size: 20px;
+                line-height: 24.2px;
+
+                margin-top: 59px;
+            }
+        }
+
+        .tarif_btn {
+            position: absolute;
+            width: 287px;
+            height: 59px;
+            bottom: 24px;
+            @media screen and (min-width: $mobile_width)  {
+                width: 355px;
+                height: 59px;
+                bottom: 31px;
+            }
+        }
+    }
+}
+
+.item_orange {
+    border: 1px solid $color_orange;
+
+    .header {
+        background-color: $color_orange;
+        color: $color_black;
+    }
+}
+
+.item_cyan {
+    border: none;
+
+    .header {
+        background-color: $color_cyan;
+        color: $color_black;
+    }
+}
+
+.item_black {
+    border: none;
+
+    .header {
+        background-color: $color_black;
+        color: $color_white;
+    }
+}

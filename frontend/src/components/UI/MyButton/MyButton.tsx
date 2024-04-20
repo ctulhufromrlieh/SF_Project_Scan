@@ -8,19 +8,27 @@ export enum ButtonSizeType {
     LARGE = "LARGE",
 }
 
+export enum BorderRadiusType {
+    NORMAL = "NORMAL",
+    LARGE = "LARGE",
+}
+
 export enum ButtonColorScheme {
     BLUE_WHITE = "BLUE_WHITE",
     GRAY_BLACK = "GRAY_BLACK",
     CYAN_BLACK = "CYAN_BLACK",
+    // SEA_WHITE = "SEA_WHITE",
 }
 
 interface MyButtonProps extends ComponentPropsWithoutRef<"button">{
-    sizeType?: string;
-    colorScheme?: string;
+    sizeType?: ButtonSizeType;
+    borderRadiusType?: BorderRadiusType;
+    colorScheme?: ButtonColorScheme;
     addClassNames?: string[];
 }
 
-const MyButton: React.FC<MyButtonProps> = ({sizeType = ButtonSizeType.NORMAL, colorScheme = ButtonColorScheme.BLUE_WHITE, children, addClassNames, ...rest}: MyButtonProps) => {
+const MyButton: React.FC<MyButtonProps> = ({sizeType = ButtonSizeType.NORMAL, borderRadiusType = BorderRadiusType.NORMAL, colorScheme = ButtonColorScheme.BLUE_WHITE, 
+    children, addClassNames, ...rest}: MyButtonProps) => { 
     let usedClasses = [classes.btn_common];
 
     let usedRest = rest;
@@ -40,6 +48,16 @@ const MyButton: React.FC<MyButtonProps> = ({sizeType = ButtonSizeType.NORMAL, co
     }
     usedClasses.push(usedSizeClass);
 
+    let usedBorderRadiusClass = "";
+    if (borderRadiusType === BorderRadiusType.NORMAL) {
+        usedBorderRadiusClass = classes.btn_border_radius_normal;
+    } else if (borderRadiusType === BorderRadiusType.LARGE) {
+        usedBorderRadiusClass = classes.btn_border_radius_large;
+    } else {
+        throw new Error("MyButton: Wrong type of borderRadiusType");
+    }
+    usedClasses.push(usedBorderRadiusClass);
+
     let usedColorClass = "";
     if (colorScheme === ButtonColorScheme.BLUE_WHITE) {
         usedColorClass = classes.btn_color_blue_white;
@@ -47,6 +65,8 @@ const MyButton: React.FC<MyButtonProps> = ({sizeType = ButtonSizeType.NORMAL, co
         usedColorClass = classes.btn_color_cyan_black;
     } else if (colorScheme === ButtonColorScheme.GRAY_BLACK) {
         usedColorClass = classes.btn_color_gray_black;
+    // } else if (colorScheme === ButtonColorScheme.SEA_WHITE) {
+    //     usedColorClass = classes.btn_color_sea_white;
     } else {
         throw new Error("MyButton: Wrong type of colorScheme");
     }
@@ -56,7 +76,7 @@ const MyButton: React.FC<MyButtonProps> = ({sizeType = ButtonSizeType.NORMAL, co
         usedClasses.push(...addClassNames);
     }
 
-    console.log(usedClasses);
+    // console.log(usedClasses);
 
     return (
         <button className={usedClasses.join(" ")} {...usedRest}>{children}</button>

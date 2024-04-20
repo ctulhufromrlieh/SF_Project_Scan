@@ -15,7 +15,17 @@ import whyWeImg3 from "../../../img/pages/main/why-we-reason-03.module.svg";
 import whyWeImg4 from "../../../img/pages/main/why-we-reason-04.module.svg";
 import whyWeImg5 from "../../../img/pages/main/why-we-reason-05.module.svg";
 import whyWeImg6 from "../../../img/pages/main/why-we-reason-06.module.svg";
-import { PageMainCarouselItemProps } from "./PageMainCarousel/PageMainCarousel/PageMainCarouselItem";
+
+import tarifImg1D from "../../../img/pages/main/tarif-1-desktop.module.svg";
+import tarifImg1M from "../../../img/pages/main/tarif-1-mobile.module.svg";
+import tarifImg2D from "../../../img/pages/main/tarif-2-desktop.module.svg";
+import tarifImg2M from "../../../img/pages/main/tarif-2-mobile.module.svg";
+import tarifImg3D from "../../../img/pages/main/tarif-3-desktop.module.svg";
+import tarifImg3M from "../../../img/pages/main/tarif-3-mobile.module.svg";
+
+import { PageMainCarouselItemProps } from "./PageMainCarousel/PageMainCarouselItem/PageMainCarouselItem";
+import { PMTColorScheme, PageMainTarifItemProps } from "./PageMainTarifList/PageMainTarifItem/PageMainTarifItem";
+import PageMainTarifList from "./PageMainTarifList/PageMainTarifList";
 
 const PageMain: React.FC = () => {
     const whyWeElems: PageMainCarouselItemProps[] = [
@@ -27,9 +37,20 @@ const PageMain: React.FC = () => {
         {id: 6, image: whyWeImg6, caption: "Защита конфеденциальных сведений, не подлежащих разглашению по федеральному законодательству"},
     ];
 
+    const tarifElems: PageMainTarifItemProps[] = [
+        {id: 1, imageDesktop: tarifImg1D, imageMobile: tarifImg1M, caption: "Beginner", subcaption: "Для небольшого исследования", isCurrent: true, 
+            cost: "799 ₽", oldCost: "1 200 ₽",  costPartial: "или 150 ₽/мес. при рассрочке на 24 мес.", 
+            features: ["Безлимитная история запросов", "Безопасная сделка", "Поддержка 24/7"], colorScheme: PMTColorScheme.ORANGE},
+        {id: 2, imageDesktop: tarifImg2D, imageMobile: tarifImg2M, caption: "Pro", subcaption: "Для HR и фрилансеров", isCurrent: false, 
+            cost: "1 299 ₽", oldCost: "2 600 ₽",  costPartial: "или 279 ₽/мес. при рассрочке на 24 мес.", 
+            features: ["Все пункты тарифа Beginner", "Экспорт истории", "Рекомендации по приоритетам"], colorScheme: PMTColorScheme.CYAN},
+        {id: 3, imageDesktop: tarifImg3D, imageMobile: tarifImg3M, caption: "Business", subcaption: "Для корпоративных клиентов", isCurrent: false, 
+            cost: "2 379 ₽", oldCost: "3 700 ₽",  costPartial: "", 
+            features: ["Все пункты тарифа Pro", "Безлимитное количество запросов", "Приоритетная поддержка"], colorScheme: PMTColorScheme.BLACK},
+    ]
+
     return (
         <div className={classes.page}>
-            {/* <div style={{boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.2)", width: 200, height: 200, margin: 40, borderRadius: 10}} ></div> */}
             <div className={classes.overview}>
                 <div>
                     <h1 className={classes.heading_main}>сервис по поиску публикаций о компании по его ИНН</h1>
@@ -45,20 +66,11 @@ const PageMain: React.FC = () => {
             <div className={classes.why_we}>
                 <h2 className={classes.heading_std}>Почему именно мы</h2>
                 <PageMainCarousel elems={whyWeElems}/>
-                {/* <div className={classes.carousel_container}>
-                    <PageMainCarousel elems={whyWeElems}/>
-                </div> */}
-                {/* <PageMainCarousel></PageMainCarousel> */}
             </div>
-            {/* <div className={pageMainStyle.why_we}>
-                <h2>Почему именно мы</h2>
-                <PageMainCarousel></PageMainCarousel>
+            <div className={classes.our_tarifs}>
+                <h2 className={classes.heading_std}>наши тарифы</h2>
+                <PageMainTarifList elems={tarifElems}/>
             </div>
-            <div className={pageMainStyle.before_tarifs} />
-            <div className={pageMainStyle.tarifs}>
-                <h2>наши тарифы</h2>
-                <PageMainTarifs />
-            </div> */}
         </div>
     );
 }
