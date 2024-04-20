@@ -1,6 +1,6 @@
 import React from "react";
 import PageMain from "../components/pages/PageMain/PageMain";
-import PageLogin from "../components/pages/PageLogin";
+import PageLogin from "../components/pages/PageLogin/PageLogin";
 import { RouteData } from "../types/common";
 
 // import About from "../pages/About";
@@ -18,4 +18,5 @@ export const publicRoutes: RouteData[] = [
     {path: "/", component: PageMain, caption: "Главная", isVisible: true},
     {path: "/tariffs", component: PageMain, caption: "Тарифы", isVisible: true},
     {path: "/faq", component: PageMain, caption: "FAQ", isVisible: true},
+    {path: "/login", component: PageLogin, caption: "Авторизация", isVisible: false},
 ]

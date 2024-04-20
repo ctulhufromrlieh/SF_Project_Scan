@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, useEffect, useId, useRef } from "react";
+import React, { ComponentPropsWithoutRef } from "react";
 
 import classes from './MyButton.module.scss';
 
