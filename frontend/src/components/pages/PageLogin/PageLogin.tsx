@@ -10,7 +10,7 @@ import imageSocialBtnGoogle from "../../../img/pages/login/btn-google.module.svg
 import imageSocialBtnYandex from "../../../img/pages/login/btn-yandex.module.svg";
 
 import Switcher, { SwitcherElem } from "../../UI/Switcher/Switcher";
-import MyLabeledInput from "../../UI/MyInput/MyLabeledInput";
+import MyLabeledInput, { LabelType } from "../../UI/MyLabeledInput/MyLabeledInput";
 import MyButton, { ButtonColorScheme, ButtonSizeType } from "../../UI/MyButton/MyButton";
 import { Link } from "react-router-dom";
 
@@ -67,6 +67,7 @@ const PageLogin = () => {
                             id="login-form__username"
                             type="text"
                             labelCaption="Логин или номер телефона:" 
+                            labelType={LabelType.LIGHT}
                             errorCaption="Введите корректные данные" 
                             value={username}
                             setValue={(value) => usernameChangeHandler(value)} 
@@ -78,6 +79,7 @@ const PageLogin = () => {
                             id="login-form__password"
                             type="password"
                             labelCaption="Пароль:" 
+                            labelType={LabelType.LIGHT}
                             errorCaption="Неправильный пароль" 
                             value={password}
                             setValue={(value) => passwordChangeHandler(value)} 

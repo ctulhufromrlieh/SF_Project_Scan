@@ -2,10 +2,18 @@ import React, { ComponentPropsWithoutRef, useEffect, useId, useRef } from "react
 
 import classes from './MyLabeledInput.module.scss';
 
+export enum LabelType {
+    LIGHT = "LIGHT",
+    NORMAL = "NORMAL",
+}
+
 interface MyLabeledInputProps extends ComponentPropsWithoutRef<"input">{
     id: string;
     labelCaption?: string;
+    labelType?: LabelType;
+    isLabelMarked?: boolean;
     errorCaption?: string;
+    errorPlaceholder?: string;
     // value?: string;
     setValue?: (value: string) => void;
     isError?: boolean;
@@ -16,11 +24,23 @@ interface MyLabeledInputProps extends ComponentPropsWithoutRef<"input">{
     addErrorMsgClassNames?: string[];
 }
 
-const MyLabeledInput: React.FC<MyLabeledInputProps> = ({id, type="text", labelCaption = "", errorCaption = "", value = "", setValue = undefined, isError = false,
-    setIsError = undefined, addContainerClassNames = [], addLabelClassNames = [], addInputClassNames = [], addErrorMsgClassNames = [], ...rest}: MyLabeledInputProps) => {
-    
-    // const idRef = useRef<string>();
-    // let isError = true;
+const MyLabeledInput: React.FC<MyLabeledInputProps> = ({id, type="text", labelCaption = "", labelType = LabelType.NORMAL,isLabelMarked = false, 
+    errorCaption = "", errorPlaceholder = "", value = "", setValue = undefined, isError = false, setIsError = undefined, 
+    addContainerClassNames = [], addLabelClassNames = [], addInputClassNames = [], addErrorMsgClassNames = [], ...rest}: MyLabeledInputProps) => {
+
+    let labelTypeClassName = "";
+    if (labelType === LabelType.LIGHT) {
+        labelTypeClassName = classes.label_light;
+    } else if (labelType === LabelType.NORMAL) {
+        labelTypeClassName = classes.label_normal;
+    } else {
+        throw new Error("MyLabeledInput: Wrong type of labelType");
+    }
+
+    const labelMarkClassNames = [
+        classes.label_mark_normal,
+        classes.label_mark_error,
+    ];
 
     const inputClassNames = [
         classes.input_normal,
@@ -32,14 +52,6 @@ const MyLabeledInput: React.FC<MyLabeledInputProps> = ({id, type="text", labelCa
         classes.error_msg_visible,
     ];
 
-    // useEffect(() => {       
-    //     const id = "labeledEdit" + useId();
-    //     idRef.current = id;
-    //     return () => {
-    //         idRef.current = undefined;
-    //     };
-    // }, []);
-
     const makeClassName = (baseClass: string, addClasses: string[]): string => {
         let resClasses = [baseClass];
         if (addClasses) {
@@ -48,26 +60,6 @@ const MyLabeledInput: React.FC<MyLabeledInputProps> = ({id, type="text", labelCa
 
         return resClasses.join(" ");
     }
-
-    // return (
-    //     <div className={classes.container}>
-    //         <label htmlFor={idRef.current} className={classes.label}>{labelCaption}</label>
-    //         <input id={idRef.current} type="text" className={inputClassNames[Number(isError)]} {...rest}></input>
-    //         <div className={classes.error_msg_container}>
-    //             <p className={errorMsgClassNames[Number(isError)]}>{errorCaption}</p>
-    //         </div>
-    //     </div>
-    // );
-
-    // return (
-    //     <div className={makeClassName(classes.container, addContainerClassNames)}>
-    //         <label htmlFor={idRef.current} className={makeClassName(classes.label, addLabelClassNames)}>{labelCaption}</label>
-    //         <input id={idRef.current} type="text" className={makeClassName(inputClassNames[Number(isError)], addInputClassNames)} {...rest}></input>
-    //         <div className={classes.error_msg_container}>
-    //             <p className={makeClassName(errorMsgClassNames[Number(isError)], addErrorMsgClassNames)}>{errorCaption}</p>
-    //         </div>
-    //     </div>
-    // );
 
     const handleInputChange = (value: string) => {
         if (setValue) {
@@ -78,14 +70,31 @@ const MyLabeledInput: React.FC<MyLabeledInputProps> = ({id, type="text", labelCa
         }
     }
 
+    let placeholder = "";
+    if (isError) {
+        placeholder = errorPlaceholder;
+    }
+
     return (
         <div className={makeClassName(classes.container, addContainerClassNames)}>
-            <label htmlFor={id} className={makeClassName(classes.label, addLabelClassNames)}>{labelCaption}</label>
+            <div className={classes.label_container}>
+                {/* <label htmlFor={id} className={makeClassName(classes.label, addLabelClassNames)}> */}
+                <label htmlFor={id} className={makeClassName(labelTypeClassName, addLabelClassNames)}>
+                    {labelCaption}
+                </label>
+                {isLabelMarked 
+                    ?
+                    <p className={labelMarkClassNames[Number(isError)]}>*</p>
+                    :
+                    null
+                }
+            </div>
             <input 
                 id={id} 
                 type={type} 
                 className={makeClassName(inputClassNames[Number(isError)], addInputClassNames)} 
                 onChange={(event) => handleInputChange(event.target.value)}
+                placeholder={placeholder}
                 {...rest}
             />
             <div className={classes.error_msg_container}>

@@ -16,10 +16,47 @@
     }
 
     .left_part {
-        .inn_input {
+        .inn_container {
             width: 242px;
-            // margin-top: 40px;
-            // height: 43px;
+        }
+
+        .tone_container {
+            width: 242px;
+            margin-top: 30px;
+        }
+
+        .count_container {
+            // width: 242px;
+            width: 330px;
+            margin-top: 21px;
+        }
+
+        .count_label {
+            // overflow-x: visible;
+            // white-space: nowrap;
+            // width: 400px;
+        }
+
+        .count_input {
+            width: 242px;
+            box-sizing: border-box;
+        }
+
+        .date_range_container {
+            width: 335px;
+            margin-top: 21px;
+            
+            @media screen and (min-width: $mobile_width)  {
+                width: 372px;
+                margin-top: 30px;
+            }
+        }
+
+        .date_range_input {
+            width: 335px;
+            @media screen and (min-width: $mobile_width)  {
+                width: 176px;
+            }
         }
     }
 
