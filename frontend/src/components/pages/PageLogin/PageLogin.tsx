@@ -29,20 +29,26 @@ const PageLogin = () => {
         {id: 2, caption: "Зарегистрироваться"},
     ];
 
+    const isPrimaryCorrectData = (username: string, password: string) => {
+        return (username.length > 0) && (password.length > 0);
+    }
+
     const usernameChangeHandler = (value: string) => {
         setUsername(value);
-        setIsSubmitEnabled(true);
+        // setIsSubmitEnabled(true);
+        setIsSubmitEnabled(isPrimaryCorrectData(value, password));
     }
     const passwordChangeHandler = (value: string) => {
         setPassword(value);
-        setIsSubmitEnabled(true);
+        // setIsSubmitEnabled(true);
+        setIsSubmitEnabled(isPrimaryCorrectData(username, value));
     }
 
     return (
         <div>
             <div className={classes.page}>
                 <div className={classes.left_part}>
-                    <h2 className={classes.heading}>Для оформления подписки на тариф, необходимо авторизоваться.</h2>
+                    <h1 className={classes.heading_main}>Для оформления подписки на тариф, необходимо авторизоваться.</h1>
                     <div className={classes.image_desktop_container}>
                         <div className={classes.left_part_wrapper_left}/>
                         <img src={imageDesktop} alt="Login page image for desktop"/>

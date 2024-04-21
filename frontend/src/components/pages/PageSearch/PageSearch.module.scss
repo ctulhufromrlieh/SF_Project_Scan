@@ -1,0 +1,163 @@
+@import "../../../styles/commonTypes.scss";
+
+.page {
+    display: flex;
+    flex-direction: column;
+    max-width: 375px;
+    // padding: 20px 0 0 0;
+    flex-wrap: wrap;
+
+    border: 1px solid greenyellow;
+    padding-bottom: 25px;
+
+    @media screen and (min-width: $mobile_width)  {
+        max-width: 1440px;
+        // padding: 24px 0 0 0;
+        flex-wrap: nowrap;
+        padding-bottom: 64px;
+    }
+
+    .header {
+        display: flex;
+        margin: 20px 0 0 14px;
+
+        @media screen and (min-width: $mobile_width)  {
+            margin: 20px 0 0 60px;
+        }
+
+        .header_left {
+            display: flex;
+            flex-direction: column;
+            width: 320px;
+            
+            @media screen and (min-width: $mobile_width)  {
+                width: 650px;
+            }
+
+            .heading_main {
+                font-family: $fontname1;
+                font-size: 28px;
+                font-weight: 900;
+                line-height: 33.6px;
+                letter-spacing: 0.01em;
+                
+                @media screen and (min-width: $mobile_width)  {
+                    font-size: 40px;
+                    line-height: 48px;
+                    letter-spacing: 0.03em;
+                }
+            }
+
+            .sub_heading_description {
+                font-family: $fontname2;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 21.78px;
+
+                margin-top: 19px;
+                width: 295px;
+
+                @media screen and (min-width: $mobile_width)  {
+                    font-size: 20px;
+                    line-height: 24.2px;
+                    letter-spacing: 0.02em;
+                    
+                    margin-top: 25px;
+                    width: 530px;
+                }
+            }
+        }
+
+        .header_right_desktop {
+            // display: flex;
+            @include only_desktop_flex;
+            width: 560px;
+            align-items: flex-end;
+            // max-width: 100%;
+            // border: 1px solid red;
+
+            .header_right_desktop_image_container {
+                display: flex;
+                justify-content: space-between;
+                // border: 1px solid purple;
+                width: 100%;
+                margin-bottom: -5px;
+            }
+
+            img {
+                object-fit: none;
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+
+            .header_right_desktop_wrapper_1 {
+                flex-grow: 1;
+                flex-shrink: 1;
+            }
+
+            .header_right_desktop_wrapper_2 {
+                flex-grow: 1;
+                flex-shrink: 1;
+            }
+
+            .header_right_desktop_wrapper_3 {
+                flex-grow: 1;
+                flex-shrink: 1;
+            }
+        }
+
+        .header_right_mobile_image_container {
+            display: flex;
+            align-items: flex-end;
+
+            margin-left: -40px;
+            padding-bottom: 53px;
+
+            img {
+                object-fit: none;
+            }
+        }
+    }
+
+    .main {
+        // border: 1px solid yellowgreen;
+        display: flex;
+        justify-content: center;
+        margin-top: 21px;
+        flex-wrap: wrap;
+        row-gap: 80px;
+        column-gap: 24px;
+        @media screen and (min-width: $mobile_width)  {
+            margin-top: 47px;
+        }
+
+        // .search_form {
+        //     box-shadow: 0px 0px 20px 0px #00000033;
+        //     border-radius: 10px;
+
+        //     width: 375px;
+        //     height: 688px;
+
+        //     @media screen and (min-width: $mobile_width)  {
+        //         width: 872px;
+        //         height: 543px;
+        //     }
+        // }
+
+        .main_image_container_desktop {
+            @include only_desktop_flex;
+            justify-content: center;
+            border: 1px solid green;
+        }
+
+        // .main_image_container_mobile {
+        //     @include only_mobile_flex;
+        //     margin-top: 24px;
+        // }
+    }
+
+    .main_image_container_mobile {
+        @include only_mobile_flex;
+        margin-top: 24px;
+    }
+}
