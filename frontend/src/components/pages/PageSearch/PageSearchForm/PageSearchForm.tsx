@@ -3,6 +3,8 @@ import classes from "./PageSearchForm.module.scss";
 import MyLabeledInput from "../../../UI/MyLabeledInput/MyLabeledInput";
 import MyLabeledSelect, { SelectOption } from "../../../UI/MyLabeledSelect/MyLabeledSelect";
 import MyLabeledDateRange, { DateRange } from "../../../UI/MyLabeledDateRange/MyLabeledDateRange";
+import MyLabeledCheckbox from "../../../UI/MyLabeledCheckbox/MyLabeledCheckbox";
+import MyButton, { ButtonColorScheme, ButtonSizeType } from "../../../UI/MyButton/MyButton";
 
 const PageSearchForm = () => {
     const [inn, setInn] = useState("");
@@ -15,6 +17,14 @@ const PageSearchForm = () => {
     const [range, setRange] = useState<DateRange>({value1: "", value2: ""});
     const [isRangeError, setIsRangeError] = useState(false);
     // const [isRangeError, setIsRangeError] = useState(true);
+    const [isMaxFullness, setIsMaxFullness] = useState(true);
+    const [isBusinesContext, setIsBusinesContext] = useState(true);
+    const [isMainRole, setIsMainRole] = useState(true);
+    const [isOnlyRiskFactors, setIsOnlyRiskFactors] = useState(false);
+    const [isIncludeTechNews, setIsIncludeTechNews] = useState(false);
+    const [isIncludeAnounces, setIsIncludeAnounces] = useState(true);
+    const [isIncludeSumNews, setIsIncludeSumNews] = useState(false);
+    const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
     
 
     const innChangeHandler = (value: string) => {
@@ -89,7 +99,53 @@ const PageSearchForm = () => {
                 />
             </div>
             <div className={classes.right_part}>
-                
+                <div className={classes.checkbox_list}>
+                    <MyLabeledCheckbox
+                        labelCaption="Признак максимальной полноты"
+                        checked={isMaxFullness}
+                        setChecked={setIsMaxFullness}
+                    />
+                    <MyLabeledCheckbox
+                        labelCaption="Упоминания в бизнес-контексте"
+                        checked={isBusinesContext}
+                        setChecked={setIsBusinesContext}
+                    />
+                    <MyLabeledCheckbox
+                        labelCaption="Главная роль в публикации"
+                        checked={isMainRole}
+                        setChecked={setIsMainRole}
+                    />
+                    <MyLabeledCheckbox
+                        labelCaption="Публикации только с риск-факторами"
+                        checked={isOnlyRiskFactors}
+                        setChecked={setIsOnlyRiskFactors}
+                    />
+                    <MyLabeledCheckbox
+                        labelCaption="Включать технические новости рынков"
+                        checked={isIncludeTechNews}
+                        setChecked={setIsIncludeTechNews}
+                    />
+                    <MyLabeledCheckbox
+                        labelCaption="Включать анонсы и календари"
+                        checked={isIncludeAnounces}
+                        setChecked={setIsIncludeAnounces}
+                    />
+                    <MyLabeledCheckbox
+                        labelCaption="Включать сводки новостей"
+                        checked={isIncludeSumNews}
+                        setChecked={setIsIncludeSumNews}
+                    />
+                </div>
+                <div className={classes.search_btn_container}>
+                    <MyButton
+                        sizeType={ButtonSizeType.NORMAL} 
+                        colorScheme={ButtonColorScheme.BLUE_WHITE} 
+                        addClassNames={[classes.search_btn]}
+                        disabled={!isSubmitEnabled}>
+                        Поиск
+                    </MyButton>
+                    <p className={classes.mark_description}>* Обязательные к заполнению поля</p>
+                </div>
             </div>
         </div>
     );
