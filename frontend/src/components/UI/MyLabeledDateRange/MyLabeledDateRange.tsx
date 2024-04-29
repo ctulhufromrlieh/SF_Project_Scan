@@ -1,6 +1,7 @@
 import React, { ComponentPropsWithoutRef, useEffect, useId, useRef } from "react";
 
 import classes from './MyLabeledDateRange.module.scss';
+import { makeClassName } from "../../../utils/classes";
 
 export interface DateRange {
     value1: string;
@@ -39,15 +40,6 @@ const MyLabeledDateRange: React.FC<MyLabeledDateRangeProps> = ({type="date", lab
         classes.error_msg_hidden,
         classes.error_msg_visible,
     ];
-
-    const makeClassName = (baseClass: string, addClasses: string[]): string => {
-        let resClasses = [baseClass];
-        if (addClasses) {
-            resClasses.push(...addClasses);
-        }
-
-        return resClasses.join(" ");
-    }
 
     const handleInputChange = (value: string, isFirst: boolean) => {
         if (setRange && range) {

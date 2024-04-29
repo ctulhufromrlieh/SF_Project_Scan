@@ -1,6 +1,7 @@
 import React, { ComponentPropsWithoutRef, useEffect, useId, useRef } from "react";
 
 import classes from './MyLabeledSelect.module.scss';
+import { makeClassName } from "../../../utils/classes";
 
 export interface SelectOption {
     value: string;
@@ -19,15 +20,6 @@ interface MyLabeledSelectProps extends ComponentPropsWithoutRef<"select">{
 
 const MyLabeledSelect: React.FC<MyLabeledSelectProps> = ({id, labelCaption = "", isLabelMarked = false, value = "", setValue = undefined, 
     defaultValue = "", options, addContainerClassNames = [], ...rest}: MyLabeledSelectProps) => {
-
-    const makeClassName = (baseClass: string, addClasses: string[]): string => {
-        let resClasses = [baseClass];
-        if (addClasses) {
-            resClasses.push(...addClasses);
-        }
-
-        return resClasses.join(" ");
-    }
 
     const handleSelectChange = (value: string) => {
         if (setValue) {

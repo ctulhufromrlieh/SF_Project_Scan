@@ -1,6 +1,7 @@
 import React, { ComponentPropsWithoutRef, useEffect, useId, useRef } from "react";
 
 import classes from './MyLabeledInput.module.scss';
+import { makeClassName } from "../../../utils/classes";
 
 export enum LabelType {
     LIGHT = "LIGHT",
@@ -51,15 +52,6 @@ const MyLabeledInput: React.FC<MyLabeledInputProps> = ({id, type="text", labelCa
         classes.error_msg_hidden,
         classes.error_msg_visible,
     ];
-
-    const makeClassName = (baseClass: string, addClasses: string[]): string => {
-        let resClasses = [baseClass];
-        if (addClasses) {
-            resClasses.push(...addClasses);
-        }
-
-        return resClasses.join(" ");
-    }
 
     const handleInputChange = (value: string) => {
         if (setValue) {

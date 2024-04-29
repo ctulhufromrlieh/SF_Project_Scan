@@ -12,7 +12,7 @@ const PageMainTarifList: React.FC<PageMainTarifListProps> = ({elems}: PageMainTa
     return (
         <div className={classes.list}>
                 {elems.map(elem => 
-                    <PageMainTarifItem {...elem} />
+                    <PageMainTarifItem key={elem.id} {...elem} />
                 )}
         </div>
     );
