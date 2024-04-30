@@ -12,7 +12,7 @@
 
     margin-right: 60px;
 
-    border: 1px solid orange;
+    // border: 1px solid orange;
 }
 
 .signup_link {
@@ -29,6 +29,8 @@
 }
 
 .signin_button {
+    cursor: pointer;
+
     background-color: $color_cyan;
     border: none;
     border-radius: 5px;

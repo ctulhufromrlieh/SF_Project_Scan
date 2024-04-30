@@ -7,7 +7,7 @@
     // padding: 20px 0 0 0;
     flex-wrap: wrap;
 
-    border: 1px solid greenyellow;
+    // border: 1px solid greenyellow;
     padding-bottom: 25px;
 
     @media screen and (min-width: $mobile_width)  {
@@ -147,7 +147,7 @@
         .main_image_container_desktop {
             @include only_desktop_flex;
             justify-content: center;
-            border: 1px solid green;
+            // border: 1px solid green;
         }
 
         // .main_image_container_mobile {

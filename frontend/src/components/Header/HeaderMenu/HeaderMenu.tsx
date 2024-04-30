@@ -17,9 +17,9 @@ interface HeaderMenuProps {
 const HeaderMenu: React.FC<HeaderMenuProps> = ({isLogined}) => {
     let usedRoutes = [];
     if (isLogined) {
-        usedRoutes = publicRoutes;
-    } else {
         usedRoutes = privateRoutes;
+    } else {
+        usedRoutes = publicRoutes;
     }
 
     return (

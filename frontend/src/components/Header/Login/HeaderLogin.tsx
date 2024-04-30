@@ -9,9 +9,10 @@ const HeaderLogin: React.FC = () => {
         <div className={commonClasses.only_desktop}>
             <div className={classes.main}>
                 {/* <a className={classes.signup_link} href="/login/">Зарегистрироваться</a> */}
-                <Link className={classes.signup_link} to="/login">Зарегистрироваться</Link>
+                {/* <Link className={classes.signup_link} to="/login">Зарегистрироваться</Link> */}
+                <Link className={classes.signup_link} to="/register">Зарегистрироваться</Link>
                 <div className={classes.vertical_line }></div>
-                <button className={classes.signin_button}>Войти</button>
+                <Link to="/login"><button className={classes.signin_button}>Войти</button></Link>
             </div>
         </div>
     );

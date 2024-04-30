@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./PageLogin.module.scss";
 
 import imageDesktop from "../../../img/pages/login/img-desktop.module.svg";
@@ -12,17 +12,21 @@ import imageSocialBtnYandex from "../../../img/pages/login/btn-yandex.module.svg
 import Switcher, { SwitcherElem } from "../../UI/Switcher/Switcher";
 import MyLabeledInput, { LabelType } from "../../UI/MyLabeledInput/MyLabeledInput";
 import MyButton, { ButtonColorScheme, ButtonSizeType } from "../../UI/MyButton/MyButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { useActions } from "../../../hooks/useActions";
+import Loader from "../../UI/Loader/Loader";
+import { loginUserReset } from "../../../store/action-creators/account";
 
 const PageLogin = () => {
     const [pageLoginSelectedIndex, setPageLoginSelectedIndex] = useState(0);
     const [username, setUsername] = useState("");
     // const [isUsernameError, setIsUsernameError] = useState(false);
-    const [isUsernameError, setIsUsernameError] = useState(true);
+    // const [isUsernameError, setIsUsernameError] = useState(true);
     const [password, setPassword] = useState("");
     // const [isPasswordError, setIsPasswordError] = useState(false);
-    const [isPasswordError, setIsPasswordError] = useState(true);
-    const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
+    // const [isPasswordError, setIsPasswordError] = useState(true);
+    // const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
 
     const pageLoginSwitcherElems: SwitcherElem[] = [
         {id: 1, caption: "Войти"},
@@ -33,15 +37,56 @@ const PageLogin = () => {
         return (username.length > 0) && (password.length > 0);
     }
 
+    const {isLogined, accessToken, expire, loading, error} = useTypedSelector(state => state.account);
+
+    const navigate = useNavigate();
+    if (isLogined) {
+        navigate("/");    
+    }
+    
+    const {loginUser, loginUserReset} = useActions();
+    // useEffect(() => {
+    //     loginUser();
+    // }, []);
+
+    const submit = () => {
+        loginUser(username, password);
+    }
+
+    let isUsernameError = false;
+    let isPasswordError = false;
+    if (error) {
+        isUsernameError = true;
+        isPasswordError = true;
+    }
+    
+    const changeErrorState = (value: boolean) => {
+        if (!value) {
+            loginUserReset();
+            // console.log("loginUserReset");
+        }
+    }
+
+    // console.log('PageLogin: render', error);
+
+    const isSubmitEnabled = isPrimaryCorrectData(username, password) && !loading && !(error);
+    
+    // if (loading) {
+    //     return <h1>Идёт загрузка...</h1>;
+    // }
+    // if (error) {
+    //     return <h1>{error}</h1>;
+    // }
+
     const usernameChangeHandler = (value: string) => {
         setUsername(value);
         // setIsSubmitEnabled(true);
-        setIsSubmitEnabled(isPrimaryCorrectData(value, password));
+        // setIsSubmitEnabled(isPrimaryCorrectData(value, password));
     }
     const passwordChangeHandler = (value: string) => {
         setPassword(value);
         // setIsSubmitEnabled(true);
-        setIsSubmitEnabled(isPrimaryCorrectData(username, value));
+        // setIsSubmitEnabled(isPrimaryCorrectData(username, value));
     }
 
     return (
@@ -72,7 +117,7 @@ const PageLogin = () => {
                             value={username}
                             setValue={(value) => usernameChangeHandler(value)} 
                             isError={isUsernameError}
-                            setIsError={(value) => setIsUsernameError(value)}
+                            setIsError={(value) => changeErrorState(value)}
                             addContainerClassNames={[classes.username_input]}
                         />
                         <MyLabeledInput 
@@ -84,7 +129,7 @@ const PageLogin = () => {
                             value={password}
                             setValue={(value) => passwordChangeHandler(value)} 
                             isError={isPasswordError}
-                            setIsError={(value) => setIsPasswordError(value)}
+                            setIsError={(value) => changeErrorState(value)}
                             addContainerClassNames={[classes.password_input]}
                         />
                         <MyButton 
@@ -92,8 +137,9 @@ const PageLogin = () => {
                             colorScheme={ButtonColorScheme.BLUE_WHITE}
                             addClassNames={[classes.submit_btn]}
                             disabled={!isSubmitEnabled}
+                            onClick={() => submit()}
                         >
-                            Войти
+                            Войти{loading && <span style={{position: "absolute"}}><Loader/></span>}
                         </MyButton>
                         <div className={classes.restore_psw_container}>
                             <Link className={classes.restore_psw} to="/restore-password">Восстановить пароль</Link>

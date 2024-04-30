@@ -19,7 +19,8 @@ import { privateRoutes, publicRoutes } from "../../router";
 const Header: React.FC = () => {
     const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
     // const menuItems: string[] = ["Главная", "Тарифы", "FAQ"];
-    const isLogined = true;
+    // const isLogined = true;
+    const isLogined = false;
 
 
     return (

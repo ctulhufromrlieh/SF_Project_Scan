@@ -1,3 +1,8 @@
+export interface LoginResponseData {
+    accessToken: string;
+    expire: Date;
+}
+
 export interface SummaryItem {
     date: Date;
     all: number;
