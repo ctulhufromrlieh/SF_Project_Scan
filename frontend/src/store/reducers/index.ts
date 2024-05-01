@@ -1,12 +1,11 @@
 import { combineReducers } from "redux";
 import { accountReducer } from "./accountReducer";
-// import { UserAction } from "../../types/user";
-// import { todoReducer } from "./todoReducer";
+import { accountInfoReducer } from "./accountInfoReducer";
 
 
 export const rootReducer = combineReducers({
     account: accountReducer,
-    // reducer2: reducer2,
+    accountInfo: accountInfoReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>;

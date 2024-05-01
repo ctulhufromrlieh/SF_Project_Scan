@@ -14,13 +14,15 @@ import MyModal from "../UI/MyModal/MyModal";
 import MobileMenu from "./MobileMenu/MobileMenu";
 import Navbar from "../UI/Navbar/Navbar";
 import { privateRoutes, publicRoutes } from "../../router";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 
 const Header: React.FC = () => {
+    const {isLogined, accessToken, expire, loading, error} = useTypedSelector(state => state.account);
     const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
     // const menuItems: string[] = ["Главная", "Тарифы", "FAQ"];
     // const isLogined = true;
-    const isLogined = false;
+    // const isLogined = false;
 
 
     return (
@@ -35,7 +37,7 @@ const Header: React.FC = () => {
             {isLogined 
                 ?
                 <>
-                    <HeaderProfileData/>
+                    <HeaderProfileData />
                     <HeaderProfileUser/>
                 </>
                 : 

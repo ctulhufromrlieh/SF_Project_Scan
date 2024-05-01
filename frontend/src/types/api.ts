@@ -1,6 +1,21 @@
 export interface LoginResponseData {
     accessToken: string;
-    expire: Date;
+    // expire: Date;
+    expire: string;
+}
+
+export interface AccountInfoResponseData {
+    eventFiltersInfo: {
+        usedCompanyCount: number,
+        companyLimit: number,
+    }
+}
+
+export interface BalanceResponseData {
+    unlimited: boolean;
+    balance: number;
+    searchTermCost: number;
+    searchRateBlockPeriod: number;
 }
 
 export interface SummaryItem {

@@ -19,6 +19,14 @@ import Loader from "../../UI/Loader/Loader";
 import { loginUserReset } from "../../../store/action-creators/account";
 
 const PageLogin = () => {
+    const {isLogined, accessToken, expire, loading, error} = useTypedSelector(state => state.account);
+    const navigate = useNavigate();
+
+    // const navigate = useNavigate();
+    // if (isLogined) {
+    //     navigate("/");    
+    // }
+
     const [pageLoginSelectedIndex, setPageLoginSelectedIndex] = useState(0);
     const [username, setUsername] = useState("");
     // const [isUsernameError, setIsUsernameError] = useState(false);
@@ -37,20 +45,13 @@ const PageLogin = () => {
         return (username.length > 0) && (password.length > 0);
     }
 
-    const {isLogined, accessToken, expire, loading, error} = useTypedSelector(state => state.account);
-
-    const navigate = useNavigate();
-    if (isLogined) {
-        navigate("/");    
-    }
-    
     const {loginUser, loginUserReset} = useActions();
     // useEffect(() => {
     //     loginUser();
     // }, []);
 
     const submit = () => {
-        loginUser(username, password);
+        loginUser(username, password, navigate);
     }
 
     let isUsernameError = false;
