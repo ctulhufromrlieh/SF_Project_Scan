@@ -8,23 +8,54 @@ import image2 from "../../../img/pages/results/results-image-2.module.png";
 
 
 import PageResultsCarousel from "./PageResultsCarousel/PageResultsCarousel";
-import { Document, DocumentType, SummaryItem } from "../../../types/api";
+import { Document, DocumentType, Histogram, SummaryItem } from "../../../types/api";
 import PageResultsDocumentList from "./PageResultsDocumentList/PageResultsDocumentList";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 // import PageResultsCarouselMobile from "./PageResultsCarouselMobile/PageResultsCarouselMobile";
 
 // import PageSearchForm from "./PageSearchForm/PageSearchForm";
+const makeSummaryItems = (totalHistograms: Histogram[], riskHistograms: Histogram[]): SummaryItem[] => {
+    
+    let res: SummaryItem[] = [];
+
+    const getRiskCountForTotalHistogram = (totalHistogram: Histogram) => {
+        const riskHistogram = riskHistograms.find(elem => elem.date === totalHistogram.date);
+        if (riskHistogram) {
+            return riskHistogram.value;
+        } else {
+            return 0;
+        }
+    }
+
+    totalHistograms.map((totalHistogram) => {
+        const newSummaryItem: SummaryItem = {
+            date: new Date(totalHistogram.date),
+            all: totalHistogram.value,
+            risks: getRiskCountForTotalHistogram(totalHistogram),
+        };
+        
+        res.push(newSummaryItem);
+    })
+
+    return res;
+}
 
 const PageResults = () => {
-    const elems: SummaryItem[] = [
-        {date: new Date("2021-09-10"), all: 5, risks: 0},
-        {date: new Date("2021-09-13"), all: 2, risks: 0},
-        {date: new Date("2021-09-17"), all: 6, risks: 0},
-        {date: new Date("2021-09-20"), all: 8, risks: 2},
-        {date: new Date("2021-10-12"), all: 1, risks: 0},
-        {date: new Date("2021-10-15"), all: 10, risks: 2},
-        {date: new Date("2021-10-16"), all: 4, risks: 0},
-        {date: new Date("2021-10-17"), all: 3, risks: 0},
-    ];
+    // const elems: SummaryItem[] = [
+    //     {date: new Date("2021-09-10"), all: 5, risks: 0},
+    //     {date: new Date("2021-09-13"), all: 2, risks: 0},
+    //     {date: new Date("2021-09-17"), all: 6, risks: 0},
+    //     {date: new Date("2021-09-20"), all: 8, risks: 2},
+    //     {date: new Date("2021-10-12"), all: 1, risks: 0},
+    //     {date: new Date("2021-10-15"), all: 10, risks: 2},
+    //     {date: new Date("2021-10-16"), all: 4, risks: 0},
+    //     {date: new Date("2021-10-17"), all: 3, risks: 0},
+    // ];
+
+    const { totalHistograms, riskHistograms } = useTypedSelector(state => state.histogramQuery);
+
+    const elems: SummaryItem[] = makeSummaryItems(totalHistograms, riskHistograms);
+    console.log(elems);
 
     const docs: Document[] = [
         {

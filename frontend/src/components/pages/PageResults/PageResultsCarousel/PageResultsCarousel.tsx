@@ -5,7 +5,7 @@ import classes from "./PageResultsCarousel.module.scss";
 
 import { Settings } from "react-slick";
 import MySlider from "../../../UI/MySlider/MySlider";
-import { SummaryItem } from "../../../../types/api";
+import { Histogram, SummaryItem } from "../../../../types/api";
 import PageResultsCarouselItem from "./PageResultsCarouselItem/PageResultsCarouselItem";
 
 interface PageResultsCarouselProps {
@@ -15,6 +15,7 @@ interface PageResultsCarouselProps {
 const PageResultsCarousel: React.FC<PageResultsCarouselProps> = ({elems}) => {
     const settingsDesktop: Settings = {
         slidesToShow: 8,
+        infinite: true,
         responsive: [
             {
                 breakpoint: 1260,

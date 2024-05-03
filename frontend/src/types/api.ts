@@ -71,7 +71,7 @@ export interface HistogramList {
 }
 
 export interface HistogramsResponseData {
-    data: HistogramList;
+    data: HistogramList[];
 }
 
 export interface BalanceResponseData {

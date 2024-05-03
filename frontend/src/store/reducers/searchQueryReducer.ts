@@ -163,7 +163,7 @@ const recalcIsReadyReducer = (state: SearchQueryState): SearchQueryState => {
     const isReady = 
         (state.inn.length > 0) && Number.isInteger(state.count) && (state.date1.length > 0) && (state.date2.length > 0) &&
         !state.isInnError && !state.isCountError && !state.isDateError;
-    console.log("recalcIsReadyReducer: isReady = ", isReady);
+    // console.log("recalcIsReadyReducer: isReady = ", isReady);
     return {...state, isReady: isReady };    
 }
 
@@ -171,7 +171,7 @@ const checkReducer = (state: SearchQueryState): SearchQueryState => {
     const isInnError = !checkInn(state.inn);
     const IsCountError = !checkCount(state.count); 
     const isDateError = !checkDate(state.date1, state.date2);
-    console.log("errors: ", isInnError, IsCountError, isDateError);
+    // console.log("errors: ", isInnError, IsCountError, isDateError);
     // const isReady = !isInnError && !IsCountError && !isDateError;
     // return {...state, isInnError: isInnError, isCountError: IsCountError, isDateError: isDateError, isReady: isReady };
     return recalcIsReadyReducer({...state, isInnError: isInnError, isCountError: IsCountError, isDateError: isDateError });

@@ -4,18 +4,25 @@ import { HistogramsAction, HistogramsActionTypes } from "../../types/histograms"
 import { SearchQueryActionTypes, SearchQueryState } from "../../types/searchQuery";
 import { Dispatch, StateFromReducersMapObject } from "redux";
 import axios from "axios";
+import { NavigateFunction } from "react-router";
 
 // export const fetchHistograms = (accessToken: string, typedSelector: TypedUseSelectorHook<RootState>) => {
-export const fetchHistograms = (accessToken: string, searchQuery: SearchQueryState) => {
-    return async (dispatch: Dispatch<HistogramsAction>) => {
+export const fetchHistograms = (accessToken: string, navigate: NavigateFunction) => {
+    return async (dispatch: Dispatch<HistogramsAction>, getState: () => RootState) => {
         try {
             // dispatch({type: SearchQueryActionTypes.CHECK_PARAMS});
             // const {isReady} = typedSelector(state => state.searchQuery);
             // const searchQuery = typedSelector(state => state.searchQuery);
-            if (!searchQuery.isReady) {
+            // if (!searchQuery.isReady) {
+            //     return;
+            // }
+            const searchQuery = getState().searchQuery;
+            const isReady = searchQuery.isReady;
+            if (!isReady) {
                 return;
             }
 
+            // console.log("getState", getState());
             console.log("searchQuery.isReady", searchQuery.isReady);
 
             const headers = {
@@ -92,6 +99,8 @@ export const fetchHistograms = (accessToken: string, searchQuery: SearchQuerySta
             // console.log("after histograms");
             console.log(response.data);
             dispatch({type: HistogramsActionTypes.FETCH_HISTOGRAMS_SUCCESS, payload: response.data})
+
+            navigate("/results")
         } catch (e) {
             console.log("histograms error:")
             console.log(e);

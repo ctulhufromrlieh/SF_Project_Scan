@@ -9,10 +9,15 @@ const initialState: HistogramsState = {
 }
 
 const getHistogramsByType = (histogramsResponseData: HistogramsResponseData, histogramType: HistogramType): Histogram[] => {
-    return [];
+    const list = histogramsResponseData.data.find(elem => elem.histogramType === histogramType);
+    if (list) {
+        return list.data;
+    } else {
+        return [];
+    }
 }
 
-export const accountInfoReducer = (state = initialState, action: HistogramsAction): HistogramsState => {
+export const histogramsReducer = (state = initialState, action: HistogramsAction): HistogramsState => {
     switch (action.type) {
         case HistogramsActionTypes.FETCH_HISTOGRAMS:
             return { loading: true, error: null, totalHistograms: [], riskHistograms: [] };
