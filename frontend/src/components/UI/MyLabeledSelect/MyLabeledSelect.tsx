@@ -50,7 +50,7 @@ const MyLabeledSelect: React.FC<MyLabeledSelectProps> = ({id, labelCaption = "",
                 value={value}
                 onChange={(event) => handleSelectChange(event.target.value)}
                 {...rest}
-                defaultValue={defaultValue}
+                // defaultValue={defaultValue}
             >
                 {defaultValue 
                     ? 

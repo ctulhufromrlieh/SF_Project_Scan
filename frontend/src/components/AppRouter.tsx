@@ -7,17 +7,19 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "../router";
 // import { AuthContext } from "../context";
 import Loader from "./UI/Loader/Loader";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 const AppRouter = () => {
+    const {accessToken} = useTypedSelector(state => state.account);
     // const {isAuth, isLoading} = useContext(AuthContext);
-    const isAuth = false;
-    const isLoading = false;
+    // const isAuth = false;
+    // const isLoading = false;
 
-    if (isLoading) {
-        return <Loader/>;
-    }
+    // if (isLoading) {
+    //     return <Loader/>;
+    // }
 
     return (
-            isAuth 
+        accessToken 
             ?
             <Routes>
                 {privateRoutes.map(({path, component: Component}) => 

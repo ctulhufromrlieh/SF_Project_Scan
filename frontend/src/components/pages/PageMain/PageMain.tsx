@@ -26,6 +26,7 @@ import tarifImg3M from "../../../img/pages/main/tarif-3-mobile.module.svg";
 import { PageMainCarouselItemProps } from "./PageMainCarousel/PageMainCarouselItem/PageMainCarouselItem";
 import { PMTColorScheme, PageMainTarifItemProps } from "./PageMainTarifList/PageMainTarifItem/PageMainTarifItem";
 import PageMainTarifList from "./PageMainTarifList/PageMainTarifList";
+import { Link } from "react-router-dom";
 
 const PageMain: React.FC = () => {
     const whyWeElems: PageMainCarouselItemProps[] = [
@@ -55,7 +56,7 @@ const PageMain: React.FC = () => {
                 <div>
                     <h1 className={classes.heading_main}>сервис по поиску публикаций о компании по его ИНН</h1>
                     <p className={classes.sub_heading_description}>Комплексный анализ публикаций, получение данных в формате PDF на электронную почту</p>
-                    <MyButton addClassNames={[classes.btn_get_data]}>Запросить данные</MyButton>
+                    <Link to="/search"><MyButton addClassNames={[classes.btn_get_data]}>Запросить данные</MyButton></Link>
                 </div>
                 <div>
                     <img className={classes.overview_image_desktop} src={overviewImageDesktop} alt="Overview desktop image" />
