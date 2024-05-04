@@ -9,7 +9,9 @@ import { privateRoutes, publicRoutes } from "../router";
 import Loader from "./UI/Loader/Loader";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 const AppRouter = () => {
-    const {accessToken} = useTypedSelector(state => state.account);
+    const {accessToken, loading, isLogined} = useTypedSelector(state => state.account);
+    // const {accessToken, loading} = useTypedSelector(state => state.account);
+    // const isLogined = false;
     // const {isAuth, isLoading} = useContext(AuthContext);
     // const isAuth = false;
     // const isLoading = false;
@@ -18,8 +20,18 @@ const AppRouter = () => {
     //     return <Loader/>;
     // }
 
+    // const {loading} = useTypedSelector(state => state.account);
+
+    if (loading) {
+        return <Loader />;
+    }
+
+    console.log("AppRouter: isLogined = ", isLogined);
+    console.log("url: ", window.location.href);
+
     return (
-        accessToken 
+        // accessToken 
+        isLogined
             ?
             <Routes>
                 {privateRoutes.map(({path, component: Component}) => 
@@ -32,8 +44,8 @@ const AppRouter = () => {
                 <Route 
                     path="*" 
                     element={<Navigate to="/" 
-                    replace 
-                />} />
+                    replace />} 
+                />
             </Routes>
             :
             <Routes>
@@ -51,6 +63,40 @@ const AppRouter = () => {
                 />
             </Routes>
     );
+
+    // return (
+    //     accessToken 
+    //         ?
+    //         <Routes>
+    //             {privateRoutes.map(({path, component: Component}) => 
+    //                 <Route 
+    //                     key={path} 
+    //                     path={path} 
+    //                     element={<Component />} 
+    //                 />
+    //             )}
+    //             <Route 
+    //                 path="*" 
+    //                 element={<Navigate to="/search" 
+    //                 replace 
+    //             />} />
+    //         </Routes>
+    //         :
+    //         <Routes>
+    //             {publicRoutes.map(({path, component: Component}) => 
+    //                 <Route 
+    //                     key={path} 
+    //                     path={path} 
+    //                     element={<Component />} 
+    //                 />
+    //             )}
+    //             <Route 
+    //                 path="*" 
+    //                 element={<Navigate to="/login" 
+    //                 replace />} 
+    //             />
+    //         </Routes>
+    // );
 }
 
 export default AppRouter;

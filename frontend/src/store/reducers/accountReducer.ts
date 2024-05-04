@@ -8,7 +8,8 @@ const initialState: AccountState = {
     isLogined: false,
     accessToken: "",
     expire: null,
-    loading: false,
+    // loading: false,
+    loading: true,
     error: null,
 }
 

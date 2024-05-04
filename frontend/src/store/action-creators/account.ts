@@ -24,6 +24,7 @@ export const loginUser = (login: string, password: string, navigate: NavigateFun
             localStorage.setItem("account_expire", response.data.expire);
 
             // const navigate = useNavigate();
+            console.log("loginUser: before navigate");
             navigate("/");
         } catch (e) {
             // console.log(e);

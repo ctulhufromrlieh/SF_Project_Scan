@@ -23,19 +23,38 @@ const Navbar: React.FC<NavbarProps> = ({routes, listClassName, itemClassName, be
             navigate(path);
         }
     }
-    return (
-        <div className={listClassName}>
-            {routes.map(route => route.isVisible &&
-                <Link 
-                    key={route.path} 
-                    className={itemClassName} 
-                    to={route.path}
-                    onClick={(event) => usedOnClick(event, route.path)}>
-                    {route.caption}
-                </Link>
-            )}
-        </div>
-    );
+
+    if (beforeNavigateHandler) {
+        return (
+            <div className={listClassName}>
+                {routes.map(route => route.isVisible &&
+                    <Link 
+                        key={route.path} 
+                        className={itemClassName} 
+                        to={route.path}
+                        onClick={(event) => usedOnClick(event, route.path)}
+                        >
+                        {route.caption}
+                    </Link>
+                )}
+            </div>
+        );
+    } else {
+        return (
+            <div className={listClassName}>
+                {routes.map(route => route.isVisible &&
+                    <Link 
+                        key={route.path} 
+                        className={itemClassName} 
+                        to={route.path}
+                        // onClick={(event) => usedOnClick(event, route.path)}
+                        >
+                        {route.caption}
+                    </Link>
+                )}
+            </div>
+        );        
+    }
 }
 
 export default Navbar;

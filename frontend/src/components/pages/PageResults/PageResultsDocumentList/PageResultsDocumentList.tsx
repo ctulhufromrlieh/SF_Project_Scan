@@ -15,7 +15,7 @@ const PageResultsDocumentList: React.FC<PageResultsDocumentListProps> = ({docs})
     return (
         <div className={classes.container}>
             {docs.map(doc => 
-                <PageResultsDocumentItem doc={doc}/>
+                <PageResultsDocumentItem key={doc.id} doc={doc}/>
             )}
         </div>
     );

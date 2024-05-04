@@ -15,7 +15,7 @@ interface PageResultsCarouselProps {
 const PageResultsCarousel: React.FC<PageResultsCarouselProps> = ({elems}) => {
     const settingsDesktop: Settings = {
         slidesToShow: 8,
-        infinite: true,
+        infinite: false,
         responsive: [
             {
                 breakpoint: 1260,
@@ -65,6 +65,17 @@ const PageResultsCarousel: React.FC<PageResultsCarouselProps> = ({elems}) => {
         slidesToShow: 1,
     }
 
+    if (elems.length < 8) {
+        settingsDesktop.slidesToShow = elems.length;
+    }
+
+    // let addElems = [];
+    // if (elems.length < 8) {
+    //     for (let i = elems.length; i < 8; i++)
+    //         addElems.push("");
+    // }
+
+
     return (
         <div className={classes.carousel_container}>
             <div className={classes.fixed_part}>
@@ -77,6 +88,11 @@ const PageResultsCarousel: React.FC<PageResultsCarouselProps> = ({elems}) => {
                     {elems.map(elem => 
                         <PageResultsCarouselItem key={elem.date.toString()} date={elem.date} all={elem.all} risks={elem.risks} />
                     )}
+                    {/* {addElems.map(elem => 
+                        <div>
+
+                        </div>
+                    )} */}
                 </MySlider>
             </div>
             <div className={commonClasses.only_mobile}>
