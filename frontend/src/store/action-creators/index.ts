@@ -3,6 +3,7 @@ import * as AccountActionCreators from "./account";
 import * as AccountInfoActionCreators from "./accountInfo";
 import * as SearchQueryActionCreators from "./searchQuery";
 import * as HistogramsQueryActionCreators from "./histograms";
+import * as DocIdsQueryActionCreators from "./docIds";
 
 export default {
     ...AccountActionCreators,
@@ -10,4 +11,5 @@ export default {
     ...AccountInfoActionCreators,
     ...SearchQueryActionCreators,
     ...HistogramsQueryActionCreators,
+    ...DocIdsQueryActionCreators,
 }

@@ -1,3 +1,5 @@
+import { SearchQueryState } from "./searchQuery";
+
 export interface LoginResponseData {
     accessToken: string;
     // expire: Date;
@@ -11,54 +13,10 @@ export interface AccountInfoResponseData {
     }
 }
 
-// {
-//     "data": [{
-//       "data": [{
-//         "date": "2020-11-01T03:00:00+03:00",
-//         "value": 8
-//       }, {
-//         "date": "2020-06-01T03:00:00+03:00",
-//         "value": 6
-//       }],
-//       "histogramType": "totalDocuments"
-//     }, {
-//       "data": [{
-//         "date": "2020-11-01T03:00:00+03:00",
-//         "value": 0
-//       }, {
-//         "date": "2020-06-01T03:00:00+03:00",
-//         "value": 1
-//       }],
-//       "histogramType": "riskFactors"
-//     }]
-//   }
-
 export interface Histogram {
     date: string;
     value: number;
 }
-
-// {
-//     "data": [{
-//       "data": [{
-//         "date": "2020-11-01T03:00:00+03:00",
-//         "value": 8
-//       }, {
-//         "date": "2020-06-01T03:00:00+03:00",
-//         "value": 6
-//       }],
-//       "histogramType": "totalDocuments"
-//     }, {
-//       "data": [{
-//         "date": "2020-11-01T03:00:00+03:00",
-//         "value": 0
-//       }, {
-//         "date": "2020-06-01T03:00:00+03:00",
-//         "value": 1
-//       }],
-//       "histogramType": "riskFactors"
-//     }]
-//   }
 
 export enum HistogramType {
     TOTAL_DOCUMENTS = "totalDocuments",
@@ -69,6 +27,77 @@ export interface HistogramList {
     data: Histogram[];
     histogramType: HistogramType;
 }
+
+export const createHistogramRequestData = (searchQueryState: SearchQueryState): string => {
+    return JSON.stringify(
+        {
+            issueDateInterval: {
+                startDate: searchQueryState.date1,
+                endDate: searchQueryState.date2
+            },
+            searchContext: {
+                targetSearchEntitiesContext: {
+                    targetSearchEntities: [
+                        {
+                            type: "company",
+                            sparkId: null,
+                            entityId: null,
+                            inn: parseInt(searchQueryState.inn),
+                            maxFullness: searchQueryState.maxFullness,
+                            inBusinessNews: searchQueryState.inBusinessNews
+                        }
+                    ],
+                    onlyMainRole: searchQueryState.onlyMainRole,
+                    tonality: searchQueryState.tone,
+                    onlyWithRiskFactors: searchQueryState.onlyWithRiskFactors,
+                    riskFactors: {
+                        and: [],
+                        or: [],
+                        not: []
+                    },
+                    themes: {
+                        and: [],
+                        or: [],
+                        not: []
+                    }
+                },
+                themesFilter: {
+                    and: [],
+                    or: [],
+                    not: []
+                }
+            },
+            searchArea: {
+                includedSources: [],
+                excludedSources: [],
+                includedSourceGroups: [],
+                excludedSourceGroups: []
+            },
+            attributeFilters: {
+                excludeTechNews: searchQueryState.excludeTechNews,
+                excludeAnnouncements: searchQueryState.excludeAnnouncements,
+                excludeDigests: searchQueryState.excludeDigests
+            },
+            similarMode: "duplicates",
+            // similarMode: "none",
+            limit: searchQueryState.count,
+            sortType: "sourceInfluence",
+            sortDirectionType: "desc",
+            intervalType: "month",
+            histogramTypes: [
+              "totalDocuments",
+              "riskFactors"
+            ]
+        }
+    );
+}
+
+export interface SearchResultItem {
+    encodedId: string;
+    influence: number;
+    similarCount: number;
+}
+
 
 export interface HistogramsResponseData {
     data: HistogramList[];

@@ -45,7 +45,7 @@ const PageSearchForm = () => {
         isReady,
     } = searchQueryState;
 
-    const histogramQuery = useTypedSelector(state => state.histogramQuery);
+    const histogramQuery = useTypedSelector(state => state.histogram);
 
     // const getSearchQueryState = () => {
     //     return typedSelector(state => state.searchQuery);

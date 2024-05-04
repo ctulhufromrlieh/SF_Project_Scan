@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./PageResults.module.scss";
 
 import imageHeaderRightDesktop from "../../../img/pages/results/header-right-desktop.module.svg";
@@ -11,6 +11,9 @@ import PageResultsCarousel from "./PageResultsCarousel/PageResultsCarousel";
 import { Document, DocumentType, Histogram, SummaryItem } from "../../../types/api";
 import PageResultsDocumentList from "./PageResultsDocumentList/PageResultsDocumentList";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { fetchDocIds } from "../../../store/action-creators/docIds";
+import { useActions } from "../../../hooks/useActions";
+import Loader from "../../UI/Loader/Loader";
 // import PageResultsCarouselMobile from "./PageResultsCarouselMobile/PageResultsCarouselMobile";
 
 // import PageSearchForm from "./PageSearchForm/PageSearchForm";
@@ -52,7 +55,13 @@ const PageResults = () => {
     //     {date: new Date("2021-10-17"), all: 3, risks: 0},
     // ];
 
-    const { totalHistograms, riskHistograms } = useTypedSelector(state => state.histogramQuery);
+    const {accessToken} = useTypedSelector(state => state.account);
+    const { totalHistograms, riskHistograms } = useTypedSelector(state => state.histogram);
+    const docIdsState = useTypedSelector(state => state.docIds);
+    const {fetchDocIds} = useActions();
+    useEffect(() => {
+        fetchDocIds(accessToken);
+    }, [totalHistograms]);
 
     const elems: SummaryItem[] = makeSummaryItems(totalHistograms, riskHistograms);
     console.log(elems);
@@ -103,7 +112,13 @@ const PageResults = () => {
                     <div className={classes.summary_header}>
                         <h2 className={classes.heading_std}>Общая сводка</h2>
                         <p className={classes.summary_caption}>
-                            Найдено 4 221 вариантов
+                            {docIdsState.loading 
+                            ?
+                                <Loader/>
+                            :
+                                <>Найдено {docIdsState.items.length} вариантов</>
+                            }
+                            {/* Найдено 4 221 вариантов */}
                         </p>
                     </div>
                     {/* <div className={classes.carousel_desktop}>
