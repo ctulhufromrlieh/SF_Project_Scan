@@ -17,6 +17,8 @@ export const documentsReducer = (state = initialState, action: DocumentsAction):
         case DocumentsActionTypes.FETCH_DOCUMENTS_ERROR:
             console.log(action.payload);
             return { loading: false, error: action.payload, items: [] };
+        case DocumentsActionTypes.RESET_DOCUMENTS:
+            return {loading: false, error: null, items: []};
         default:
             return state;
     }

@@ -59,7 +59,7 @@ const PageSearchForm = () => {
         setDate2,
         setMaxFullness, setInBusinessNews, setOnlyMainRole, setOnlyWithRiskFactors,
         setExcludeTechNews, setExcludeAnnouncements, setExcludeDigests, checkParams,
-        fetchHistograms,
+        fetchHistograms, resetDocIds, resetDocuments,
     } = useActions();
 
     const navigate = useNavigate();
@@ -72,6 +72,8 @@ const PageSearchForm = () => {
 
     const search = () => {
         checkParams();
+        resetDocIds();
+        resetDocuments();
         fetchHistograms(accessToken, navigate);
     }
 
@@ -118,6 +120,7 @@ const PageSearchForm = () => {
                     addContainerClassNames={[classes.count_container]}
                     addLabelClassNames={[classes.count_label]}
                     addInputClassNames={[classes.count_input]}
+                    addErrorMsgClassNames={[classes.count_error]}
                 />
                 <MyLabeledDateRange
                     labelCaption="Диапазон поиска"

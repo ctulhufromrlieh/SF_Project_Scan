@@ -65,16 +65,33 @@ const PageResultsCarousel: React.FC<PageResultsCarouselProps> = ({elems}) => {
         slidesToShow: 1,
     }
 
+    let style = {};
+    const addOffsetXprev = -133;
+    let addOffsetXnext = 0;
+
+    // !!! Evil crutch
     if (elems.length < 8) {
         settingsDesktop.slidesToShow = elems.length;
+        // const deltaX = (8 - elems.length) * 132;
+        // style = {width: 1125 - deltaX};
+        // addOffsetXnext += deltaX;
     }
 
+    // console.log("addOffsetXnext = ", addOffsetXnext);
+
+    let addElems = [];
+    for (let i = 0; i < 8 - elems.length; i++) {
+        addElems.push(elems.length + i);
+    }
+
+    console.log("addElems = ", addElems);
     // let addElems = [];
     // if (elems.length < 8) {
     //     for (let i = elems.length; i < 8; i++)
     //         addElems.push("");
     // }
 
+    
 
     return (
         <div className={classes.carousel_container}>
@@ -83,10 +100,18 @@ const PageResultsCarousel: React.FC<PageResultsCarouselProps> = ({elems}) => {
                 <p>Всего</p>
                 <p>Риски</p>
             </div>
-            <div className={commonClasses.only_desktop}>
-                <MySlider settings={settingsDesktop} addContainerClassNames={[]} prevArrowData={{addOffsetX: -133, addOffsetY: 0}}>
+            <div className={commonClasses.only_desktop} style={style}>
+                <MySlider 
+                    settings={settingsDesktop} 
+                    addContainerClassNames={[]} 
+                    prevArrowData={{addOffsetX: addOffsetXprev, addOffsetY: 0}}
+                    nextArrowData={{addOffsetX: -addOffsetXnext, addOffsetY: 0}}
+                >
                     {elems.map(elem => 
                         <PageResultsCarouselItem key={elem.date.toString()} date={elem.date} all={elem.all} risks={elem.risks} />
+                    )}
+                    {addElems.map(elem => 
+                        <PageResultsCarouselItem key={elem} isEmpty={true} />
                     )}
                     {/* {addElems.map(elem => 
                         <div>

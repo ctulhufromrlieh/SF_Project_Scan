@@ -15,6 +15,8 @@ export const docIdsReducer = (state = initialState, action: DocIdsAction): DocId
         case DocIdsActionTypes.FETCH_DOCIDS_ERROR:
             console.log(action.payload);
             return { loading: false, error: action.payload, items: [] };
+        case DocIdsActionTypes.RESET_DOCIDS:
+            return {loading: false, error: null, items: []};            
         default:
             return state;
     }

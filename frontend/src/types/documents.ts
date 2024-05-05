@@ -10,6 +10,7 @@ export enum DocumentsActionTypes {
     FETCH_DOCUMENTS = "FETCH_DOCUMENTS",
     FETCH_DOCUMENTS_SUCCESS = "FETCH_DOCUMENTS_SUCCESS",
     FETCH_DOCUMENTS_ERROR = "FETCH_DOCUMENTS_ERROR",
+    RESET_DOCUMENTS = "RESET_DOCUMENTS",
 }
 
 interface DocumentsFetchAction {
@@ -26,4 +27,8 @@ interface DocumentsErrorAction {
     payload: any;
 }
 
-export type DocumentsAction = DocumentsFetchAction | DocumentsSuccessAction | DocumentsErrorAction;
+interface DocumentsResetAction {
+    type: DocumentsActionTypes.RESET_DOCUMENTS;
+}
+
+export type DocumentsAction = DocumentsFetchAction | DocumentsSuccessAction | DocumentsErrorAction | DocumentsResetAction;

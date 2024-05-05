@@ -41,15 +41,21 @@
         width: 20px;
         // background-color: red;
         border: 1px solid $color_black;
-        opacity: 1.0;
-        background-image: url("checkbox-inner.png");
-        background-position: center;
-        background-repeat: no-repeat;
+
+        // opacity: 1.0;
+        // background-image: url("checkbox-inner.png");
+        // background-position: center;
+        // background-repeat: no-repeat;
+        opacity: 0.4;
+        background-image: none;
     }
 
     input:checked ~ .checkmark {
         // border: 1px solid $color_black;
-        opacity: 0.4;
-        background-image: none;
+
+        opacity: 1.0;
+        background-image: url("checkbox-inner.png");
+        background-position: center;
+        background-repeat: no-repeat;
     }
 }

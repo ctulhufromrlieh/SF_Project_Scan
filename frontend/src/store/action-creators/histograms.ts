@@ -6,6 +6,8 @@ import { Dispatch } from "redux";
 import axios from "axios";
 import { NavigateFunction } from "react-router";
 import { createHistogramRequestData } from "../../types/api";
+import { resetDocuments } from "./documents";
+import { resetDocIds } from "./docIds";
 
 // export const fetchHistograms = (accessToken: string, typedSelector: TypedUseSelectorHook<RootState>) => {
 export const fetchHistograms = (accessToken: string, navigate: NavigateFunction) => {
@@ -25,6 +27,8 @@ export const fetchHistograms = (accessToken: string, navigate: NavigateFunction)
               'Authorization': 'Bearer ' + accessToken
             }
 
+            // resetDocIds();
+            // resetDocuments();
             dispatch({type: HistogramsActionTypes.FETCH_HISTOGRAMS});
 
             const data = createHistogramRequestData(searchQuery);

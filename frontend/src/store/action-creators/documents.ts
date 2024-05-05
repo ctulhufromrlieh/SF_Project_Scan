@@ -81,3 +81,9 @@ export const fetchDocuments = (accessToken: string, count: number) => {
         }
     }
 }
+
+export const resetDocuments = () => {
+    return async (dispatch: Dispatch<DocumentsAction>, getState: () => RootState) => {
+        dispatch({type: DocumentsActionTypes.RESET_DOCUMENTS});
+    }
+}

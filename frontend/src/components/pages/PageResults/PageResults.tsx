@@ -131,46 +131,29 @@ const PageResults = () => {
                         // </div>
                     }
                 </div>
-                {/* <div className={classes.documents}>
+                <div className={classes.documents}>
                     <h2 className={classes.heading_std}>Список документов</h2>
-                    <PageResultsDocumentList docs={docs} />
-                </div> */}
-                { docIdsState.loading || documentsState.loading 
-                ?
-                    <div className={classes.documents}>
-                        <Loader/>
-                    </div>
-                :
-                    <>{
-                        docs.length > 0
-                        ?
-                        <div className={classes.documents}>
-                            <h2 className={classes.heading_std}>Список документов</h2>
-                            <PageResultsDocumentList docs={docs} />
-                            {documentCount < docIdCount &&
-                                <div className={classes.more_btn_container}>
-                                    <MyButton 
-                                        sizeType={ButtonSizeType.LARGE}
-                                        colorScheme={ButtonColorScheme.BLUE_WHITE}
-                                        addClassNames={[classes.more_btn]}
-                                        disabled={documentsState.loading}
-                                        onClick={() => fetchDocuments(accessToken, 10)}
-                                    >
-                                        Показать больше
-                                    </MyButton>
-                                </div>
-                            }
+                    {docs.length > 0 
+                        ? 
+                        <PageResultsDocumentList docs={docs} /> 
+                        : 
+                        <p className={classes.heading_std}>Нет документов</p> 
+                    }
+                    
+                    {documentCount < docIdCount &&
+                        <div className={classes.more_btn_container}>
+                            <MyButton 
+                                sizeType={ButtonSizeType.LARGE}
+                                colorScheme={ButtonColorScheme.BLUE_WHITE}
+                                addClassNames={[classes.more_btn]}
+                                disabled={documentsState.loading}
+                                onClick={() => fetchDocuments(accessToken, 10)}
+                            >
+                                Показать больше{docIdsState.loading || documentsState.loading && <span style={{position: "absolute"}}><Loader/></span>}
+                            </MyButton>
                         </div>
-                        :
-                        <div className={classes.documents}>
-                            <h2 className={classes.heading_std}>Нет документов</h2>
-                        </div>
-                    }</>
-                }
-                {/* <div className={classes.documents}>
-                    <p className={classes.heading_std}>Список документов</p>
-                    <PageResultsDocumentList docs={docs} />
-                </div> */}
+                    }
+                </div>
             </div>
         </div>
     );

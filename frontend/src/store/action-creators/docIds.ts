@@ -43,3 +43,9 @@ export const fetchDocIds = (accessToken: string) => {
         }
     }
 }
+
+export const resetDocIds = () => {
+    return async (dispatch: Dispatch<DocIdsAction>, getState: () => RootState) => {
+        dispatch({type: DocIdsActionTypes.RESET_DOCIDS});
+    }
+}

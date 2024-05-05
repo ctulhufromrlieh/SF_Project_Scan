@@ -10,6 +10,7 @@ export enum DocIdsActionTypes {
     FETCH_DOCIDS = "FETCH_DOCIDS",
     FETCH_DOCIDS_SUCCESS = "FETCH_DOCIDS_SUCCESS",
     FETCH_DOCIDS_ERROR = "FETCH_DOCIDS_ERROR",
+    RESET_DOCIDS = "RESET_DOCIDS",
 }
 
 interface DocIdsFetchAction {
@@ -26,4 +27,8 @@ interface DocIdsErrorAction {
     payload: any;
 }
 
-export type DocIdsAction = DocIdsFetchAction | DocIdsSuccessAction | DocIdsErrorAction;
+interface DocIdsResetAction {
+    type: DocIdsActionTypes.RESET_DOCIDS;
+}
+
+export type DocIdsAction = DocIdsFetchAction | DocIdsSuccessAction | DocIdsErrorAction | DocIdsResetAction;

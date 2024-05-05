@@ -28,23 +28,12 @@ function CustomNextArrow(props: any) {
         <div
             className={className}
             // className={classes.custom_arrow_next}
-            style={{ ...style, width: 39, height: 39, right: -43 + addOffsetX}}
+            style={{ ...style, width: 39, height: 39, right: -43 + addOffsetX, marginTop: -19}}
             onClick={onClick}
         >
             <img src={sliderArrowNext} alt="Slider next arrow" />
         </div>
     );
-
-    // return (
-    //     <div
-    //         className={className}
-    //         // className={classes.custom_arrow_next}
-    //         style={{ ...style, width: 39, height: 39, right: -43}}
-    //         onClick={onClick}
-    //     >
-    //         <img src={sliderArrowNext} alt="Slider next arrow" />
-    //     </div>
-    // );
 }
 
 function CustomPrevArrow(props: any) {
@@ -61,69 +50,13 @@ function CustomPrevArrow(props: any) {
         <div
             className={className}
             // className={classes.custom_arrow_prev}
-            style={{ ...style, width: 39, height: 39, left: -43 + addOffsetX}}
+            style={{ ...style, width: 39, height: 39, left: -43 + addOffsetX, marginTop: -19}}
             onClick={onClick}
         >
             <img src={sliderArrowPrev} alt="Slider prev arrow" />
         </div>
     );
 }
-
-// function makeCustomNextArrow(arrowData: ArrowData | undefined) {
-//     return function CustomNextArrow(props: any) {
-//         const { className, style, onClick } = props;
-//         //     return (
-//         //         <div
-//         //             className={className}
-//         //             // className={classes.custom_arrow_next}
-//         //             style={{ ...style, width: 39, height: 39, right: -43}}
-//         //             onClick={onClick}
-//         //         >
-//         //             <img src={sliderArrowNext} alt="Slider next arrow" />
-//         //         </div>
-//         // );
-//         let addOffsetX = 0;
-//         let addOffsetY = 0;
-//         if (arrowData) {
-//             addOffsetX = arrowData.addOffsetX;
-//             addOffsetY = arrowData.addOffsetY;
-//         }
-//         return (
-//             <div
-//                 className={className}
-//                 // className={classes.custom_arrow_next}
-//                 style={{ ...style, width: 39, height: 39, right: -43}}
-//                 onClick={onClick}
-//             >
-//                 <img src={sliderArrowNext} alt="Slider next arrow" />
-//             </div>
-//     );
-//     }
-// }
-
-// function makeCustomPrevArrow(arrowData: ArrowData | undefined) {
-//     return function CustomPrevArrow(props: any) {
-//         const { className, style, onClick } = props;
-//         // return (
-//         //     <div
-//         //         className={className}
-//         //         style={{ ...style, width: 39, height: 39, left: -43}}
-//         //         onClick={onClick}
-//         //     >
-//         //         <img src={sliderArrowPrev} alt="Slider prev arrow" />
-//         //     </div>
-//         // );
-//         return (
-//             <div
-//                 className={className}
-//                 style={{ ...style, width: 39, height: 39, left: -43}}
-//                 onClick={onClick}
-//             >
-//                 <img src={sliderArrowPrev} alt="Slider prev arrow" />
-//             </div>
-//         );
-//     }
-// }
 
 interface MySliderProps {
     settings?: Settings | undefined;
