@@ -5,9 +5,10 @@ import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './components/AppRouter';
 import Footer from './components/Footer/Footer';
 import { useActions } from './hooks/useActions';
+import { loginUserReset } from './store/action-creators/account';
 
 function App() {
-    const {loginUserByToken} = useActions();
+    const {loginUserByToken, loginUserReset} = useActions();
 
     useEffect(() => {
         const accessToken = localStorage.getItem("account_accessToken");
@@ -16,6 +17,8 @@ function App() {
 
         if (accessToken && expire) {
             loginUserByToken(accessToken, expire);
+        } else {
+            loginUserReset();
         }
     }, []);
 

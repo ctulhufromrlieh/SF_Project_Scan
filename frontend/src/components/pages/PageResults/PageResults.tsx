@@ -8,12 +8,13 @@ import image2 from "../../../img/pages/results/results-image-2.module.png";
 
 
 import PageResultsCarousel from "./PageResultsCarousel/PageResultsCarousel";
-import { Document, DocumentType, Histogram, SummaryItem } from "../../../types/api";
+import { Document, DocumentElem, DocumentType, Histogram, SummaryItem } from "../../../types/api";
 import PageResultsDocumentList from "./PageResultsDocumentList/PageResultsDocumentList";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { fetchDocIds } from "../../../store/action-creators/docIds";
 import { useActions } from "../../../hooks/useActions";
 import Loader from "../../UI/Loader/Loader";
+import MyButton, { ButtonColorScheme, ButtonSizeType } from "../../UI/MyButton/MyButton";
 // import PageResultsCarouselMobile from "./PageResultsCarouselMobile/PageResultsCarouselMobile";
 
 // import PageSearchForm from "./PageSearchForm/PageSearchForm";
@@ -58,38 +59,25 @@ const PageResults = () => {
     const {accessToken} = useTypedSelector(state => state.account);
     const { totalHistograms, riskHistograms } = useTypedSelector(state => state.histogram);
     const docIdsState = useTypedSelector(state => state.docIds);
-    const {fetchDocIds} = useActions();
+    const docIdCount = docIdsState.items.length;
+
+    const {fetchDocIds, fetchDocuments} = useActions();
     useEffect(() => {
         fetchDocIds(accessToken);
     }, [totalHistograms]);
 
-    const elems: SummaryItem[] = makeSummaryItems(totalHistograms, riskHistograms);
-    console.log(elems);
+    useEffect(() => {
+        fetchDocuments(accessToken, 10);
+    }, [docIdCount]);
 
-    const docs: Document[] = [
-        {
-            id: 1,
-            date: new Date("2021-09-13"),
-            source: "Комсомольская правда KP.RU",
-            title: "Скиллфэктори - лучшая онлайн-школа для будущих айтишников",
-            type: DocumentType.TECH_NEWS,
-            image: image1,
-            text: "SkillFactory — школа для всех, кто хочет изменить свою карьеру и жизнь. С 2016 года обучение прошли 20 000+ человек из 40 стран с 4 континентов, самому взрослому студенту сейчас 86 лет. Выпускники работают в Сбере, Cisco, Bayer, Nvidia, МТС, Ростелекоме, Mail.ru, Яндексе, Ozon и других топовых компаниях. Принципы SkillFactory: акцент на практике, забота о студентах и ориентир на трудоустройство. 80% обучения — выполнение упражнений и реальных проектов. Каждого студента поддерживают менторы, 2 саппорт-линии и комьюнити курса. А карьерный центр помогает составить резюме, подготовиться к собеседованиям и познакомиться с IT-рекрутерами.",
-            link: "www.source1.ru",
-            wordCount: 2543,
-        },
-        {
-            id: 2,
-            date: new Date("2021-10-15"),
-            source: "VC.RU",
-            title: "Работа в Data Science в 2022 году: тренды, навыки и обзор специализаций",
-            type: DocumentType.TECH_NEWS,
-            image: image2,
-            text: "Кто такой Data Scientist и чем он занимается? Data Scientist — это специалист, который работает с большими массивами данных, чтобы с их помощью решить задачи бизнеса. Простой пример использования больших данных и искусственного интеллекта — умные ленты в социальных сетях. На основе ваших просмотров и лайков алгоритм выдает рекомендации с контентом, который может быть вам интересен. Эту модель создал и обучил дата-сайентист, и скорее всего, не один. В небольших компаниях и стартапах дата-сайентист делает все: собирает и очищает данные, создает математическую модель для их анализа, тестирует ее и презентует готовое решение бизнесу.",
-            link: "www.source2.ru",
-            wordCount: 3233,
-        },
-    ];
+    const documentsState = useTypedSelector(state => state.documents);
+    const documentCount = documentsState.items.length;
+
+    const elems: SummaryItem[] = makeSummaryItems(totalHistograms, riskHistograms);
+    // console.log("elems: ", elems);
+
+    const docs: Document[] = documentsState.items;
+    console.log("docs: ", docs);
 
     return (
         <div>
@@ -111,30 +99,78 @@ const PageResults = () => {
                 <div className={classes.summary}>
                     <div className={classes.summary_header}>
                         <h2 className={classes.heading_std}>Общая сводка</h2>
-                        <p className={classes.summary_caption}>
+                        {/* <p className={classes.summary_caption}>
                             {docIdsState.loading 
                             ?
                                 <Loader/>
                             :
                                 <>Найдено {docIdsState.items.length} вариантов</>
                             }
+                        </p> */}                       
+                        {docIdsState.loading 
+                        ?
+                            <Loader/>
+                        :
+                            <p className={classes.summary_caption}>Найдено {docIdsState.items.length} вариантов</p>
+                        }
                             {/* Найдено 4 221 вариантов */}
-                        </p>
                     </div>
-                    {/* <div className={classes.carousel_desktop}>
-                        <PageResultsCarouselDesktop elems={elems} />
-                    </div> */}
-                    <div className={classes.carousel}>
+                    {/* <div className={classes.carousel}>
                         <PageResultsCarousel elems={elems} />
-                    </div>
-                    {/* <div className={classes.carousel_mobile}>
-                        <PageResultsCarouselMobile elems={elems} />
                     </div> */}
+                    {
+                        elems.length > 0 
+                        ? 
+                        <div className={classes.carousel}>
+                            <PageResultsCarousel elems={elems} />
+                        </div>
+                        :
+                        <></>
+                        // <div className={classes.carousel}>
+                        //     <p className={classes.heading_std}>Нет сводки</p>
+                        // </div>
+                    }
                 </div>
-                <div className={classes.documents}>
+                {/* <div className={classes.documents}>
                     <h2 className={classes.heading_std}>Список документов</h2>
                     <PageResultsDocumentList docs={docs} />
-                </div>
+                </div> */}
+                { docIdsState.loading || documentsState.loading 
+                ?
+                    <div className={classes.documents}>
+                        <Loader/>
+                    </div>
+                :
+                    <>{
+                        docs.length > 0
+                        ?
+                        <div className={classes.documents}>
+                            <h2 className={classes.heading_std}>Список документов</h2>
+                            <PageResultsDocumentList docs={docs} />
+                            {documentCount < docIdCount &&
+                                <div className={classes.more_btn_container}>
+                                    <MyButton 
+                                        sizeType={ButtonSizeType.LARGE}
+                                        colorScheme={ButtonColorScheme.BLUE_WHITE}
+                                        addClassNames={[classes.more_btn]}
+                                        disabled={documentsState.loading}
+                                        onClick={() => fetchDocuments(accessToken, 10)}
+                                    >
+                                        Показать больше
+                                    </MyButton>
+                                </div>
+                            }
+                        </div>
+                        :
+                        <div className={classes.documents}>
+                            <h2 className={classes.heading_std}>Нет документов</h2>
+                        </div>
+                    }</>
+                }
+                {/* <div className={classes.documents}>
+                    <p className={classes.heading_std}>Список документов</p>
+                    <PageResultsDocumentList docs={docs} />
+                </div> */}
             </div>
         </div>
     );

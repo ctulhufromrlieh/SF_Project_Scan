@@ -126,14 +126,130 @@ export interface SummaryItem {
 export enum DocumentType {
     TECH_NEWS = "TECH_NEWS",
 }
-export interface Document {
+
+export interface DocumentElem {
     id: number;
     date: Date;
     source: string;
     title: string;
     type: DocumentType;
+    // isTechNews: boolean,
+    // isAnnouncement: boolean,
+    // isDigest: boolean,
     image: any;
     text: string;
     link: string;
     wordCount: number;
 }
+
+export interface Document {
+    id: string;
+    // date: Date;
+    date: string;
+    source: string;
+    title: string;
+    isTechNews: boolean,
+    isAnnouncement: boolean,
+    isDigest: boolean,
+    image: any;
+    text: string;
+    link: string;
+    wordCount: number;
+}
+
+export interface DocumentList {
+    items: Document[];
+    // items: any[];
+}
+
+// export interface ScanDoc {
+//     ok: {
+//         schemaVersion: string,
+//         id: string,
+//         version: number,
+//         issueDate: string,
+//         url: string,
+//         source: {
+//             id: number,
+//             groupId: number,
+//             name: string,
+//             categoryId: number,
+//             levelId: number,
+//         },
+//         dedupClusterId: string,
+//         title: {
+//             text: string,
+//             markup: string,
+//         },
+//         content: {
+//             markup: string,
+//         },
+//         entities: {
+//             companies: any[],
+//             people: any[],
+//             themes: any[],
+//             locations: any[],
+//         },
+//         attributes: {
+//             isTechNews: boolean,
+//             isAnnouncement: boolean,
+//             isDigest: boolean,
+//             influence: number,
+//             wordCount: number,
+//             coverage: {
+//                 value: number,
+//                 state: string,
+//             }
+//         },
+//         language: string
+//     }
+// }
+
+// export interface ScanDocList {
+//     items: ScanDoc[];
+// }
+
+export interface SingleDocumentResponseData {
+    ok: {
+        schemaVersion: string,
+        id: string,
+        version: number,
+        issueDate: string,
+        url: string,
+        source: {
+            id: number,
+            groupId: number,
+            name: string,
+            categoryId: number,
+            levelId: number,
+        },
+        dedupClusterId: string,
+        title: {
+            text: string,
+            markup: string,
+        },
+        content: {
+            markup: string,
+        },
+        entities: {
+            companies: any[],
+            people: any[],
+            themes: any[],
+            locations: any[],
+        },
+        attributes: {
+            isTechNews: boolean,
+            isAnnouncement: boolean,
+            isDigest: boolean,
+            influence: number,
+            wordCount: number,
+            coverage: {
+                value: number,
+                state: string,
+            }
+        },
+        language: string
+    }
+}
+
+export type DocumentsResponseData = SingleDocumentResponseData[];

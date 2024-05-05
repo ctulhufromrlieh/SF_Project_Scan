@@ -137,7 +137,7 @@ const PageLogin = () => {
                             sizeType={ButtonSizeType.LARGE}
                             colorScheme={ButtonColorScheme.BLUE_WHITE}
                             addClassNames={[classes.submit_btn]}
-                            disabled={!isSubmitEnabled}
+                            disabled={!isSubmitEnabled || loading}
                             onClick={() => submit()}
                         >
                             Войти{loading && <span style={{position: "absolute"}}><Loader/></span>}

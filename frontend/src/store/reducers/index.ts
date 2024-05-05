@@ -4,6 +4,7 @@ import { accountInfoReducer } from "./accountInfoReducer";
 import { searchQueryReducer } from "./searchQueryReducer";
 import { histogramsReducer } from "./histograms";
 import { docIdsReducer } from "./docIds";
+import { documentsReducer } from "./documents";
 
 
 export const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ export const rootReducer = combineReducers({
     searchQuery: searchQueryReducer,
     histogram: histogramsReducer,
     docIds: docIdsReducer,
+    documents: documentsReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>;

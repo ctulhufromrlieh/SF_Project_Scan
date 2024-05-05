@@ -146,5 +146,21 @@
         @media screen and (min-width: $mobile_width)  {
             margin: 107px 60px 0 60px;
         }
+
+        .more_btn_container {
+            display: flex;
+            justify-content: center;
+
+            .more_btn {
+                width: 335px;
+                height: 59px;
+                margin-top: 36px;
+                @media screen and (min-width: $mobile_width)  {
+                    width: 305px;
+                    margin-top: 38px;
+                }
+            }
+        }
+
     }
 }
