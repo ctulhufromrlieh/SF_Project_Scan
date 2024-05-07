@@ -3,6 +3,10 @@ import { Dispatch } from "redux";
 import { DocumentsAction, DocumentsActionTypes } from "../../types/documents";
 import { RootState } from "../reducers";
 import { Document, DocumentsResponseData } from "../../types/api";
+import { checkAuth } from "../../utils/auth";
+
+// import image1 from "../../../img/pages/results/results-image-1.module.png";
+import image1 from "../../img/pages/results/results-image-1.module.png";
 
 // const responseDataElemToDocument = (responseDataElem: any): Document => {
 //     return {};
@@ -26,7 +30,8 @@ const documentsResponseDataToDocuments = (documentsResponseData: DocumentsRespon
             isTechNews: sdrd.ok.attributes.isTechNews,
             isAnnouncement: sdrd.ok.attributes.isAnnouncement,
             isDigest: sdrd.ok.attributes.isDigest,
-            image: null,
+            // image: null,
+            image: image1,
             text: sdrd.ok.content.markup,
             link: sdrd.ok.url,
             wordCount: sdrd.ok.attributes.wordCount,
@@ -39,6 +44,8 @@ const documentsResponseDataToDocuments = (documentsResponseData: DocumentsRespon
 export const fetchDocuments = (accessToken: string, count: number) => {
     return async (dispatch: Dispatch<DocumentsAction>, getState: () => RootState) => {
         try {
+            checkAuth();
+
             // const searchQuery = getState().searchQuery;
             // const isReady = searchQuery.isReady;
             // if (!isReady) {

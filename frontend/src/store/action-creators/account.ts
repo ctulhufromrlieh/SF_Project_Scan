@@ -17,8 +17,6 @@ export const loginUser = (login: string, password: string, navigate: NavigateFun
             dispatch({type: AccountActionTypes.LOGIN_USER})
             const response = await axios.post('https://gateway.scan-interfax.ru/api/v1/account/login', data, {headers: headers});
             dispatch({type: AccountActionTypes.LOGIN_USER_SUCCESS, payload: response.data})
-            // const navigate = useNavigate();
-            // navigate("/");
 
             localStorage.setItem("account_accessToken", response.data.accessToken);
             localStorage.setItem("account_expire", response.data.expire);

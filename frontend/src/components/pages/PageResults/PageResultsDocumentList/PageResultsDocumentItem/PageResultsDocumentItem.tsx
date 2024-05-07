@@ -6,8 +6,13 @@ import classes from "./PageResultsDocumentItem.module.scss";
 import { Document, DocumentElem, DocumentType } from "../../../../../types/api";
 import MyButton, { ButtonColorScheme, ButtonSizeType } from "../../../../UI/MyButton/MyButton";
 
+// import image1 from "../../../img/pages/results/results-image-1.module.png";
+// import image2 from "../../../img/pages/results/results-image-2.module.png";
+
 // import { Parser } from "html-to-react";
 import parse from 'html-react-parser';
+import sanitizeHtml from "sanitize-html";
+// import * as sanitizeHtml from 'sanitize-html';
 
 const HtmlToReactParser = require('html-to-react').Parser;
 
@@ -56,7 +61,22 @@ const PageResultsDocumentItem: React.FC<PageResultsDocumentItemProps> = ({doc}) 
     // const TextReactElement = htmlToReactParser.parse(doc.text);
     // const TextReactElement = Parser.parse(doc.text);
 
-    // console.log(<>{parse(doc.text)}</>);
+    // const parsedContent = parse(doc.text.replaceAll("&lt;", "<").replaceAll("&gt;", ">"));
+    const parsedContent = parse(sanitizeHtml(doc.text.replaceAll("&lt;", "<").replaceAll("&gt;", ">")));
+    // const parsedContent = parse(sanitizeHtml(doc.text));
+
+    // console.log("doc.text = ", doc.text);
+    // console.log("parse(doc.text) = ", parse(doc.text));
+    // let parsedContent: any = "";
+    // // let DivContainer: any;
+    // try {
+    //     parsedContent = parse(doc.text.replaceAll("&lt;", "<").replaceAll("&gt;", ">"));
+    //     // DivContainer = <div className={classes.text}>{parsedContent}</div>;
+    //     // const checkContent = <Content/>;
+    // } catch {
+    //     parsedContent = "INVALID DATA";
+    // }
+    
 
     return (
         <div className={classes.item}>
@@ -65,19 +85,14 @@ const PageResultsDocumentItem: React.FC<PageResultsDocumentItemProps> = ({doc}) 
                 <p className={classes.source}>{doc.source}</p>
             </div>
             <h1 className={classes.title}>{doc.title}</h1>
-            {/* <div className={usedTypeClass}>{usedTypeCaption}</div> */}
-            {/* <div className={classNameIsTechNews}>{captionIsTechNews}</div> */}
             <div className={classes.type_class_container}>
                 {isTechNews && <div className={classNameIsTechNews}>{captionIsTechNews}</div>}
                 {isAnnouncement && <div className={classNameIsAnnouncement}>{captionIsAnnouncement}</div>}
                 {isDigest && <div className={classNameIsDigest}>{captionIsDigest}</div>}
             </div>
             <img className={classes.image} src={doc.image} alt="Document image"/>
-            {/* <p className={classes.text}>{doc.text}</p> */}
-            {/* <p className={classes.text}><TextReactElement/></p> */}
-            <div className={classes.text}>{parse(doc.text)}</div>
-            {/* <div className={classes.bottom_panel}>
-            </div> */}
+            {/* {DivContainer} */}
+            <div className={classes.text}>{parsedContent}</div>
             <MyButton
                     sizeType={ButtonSizeType.SMALL}
                     colorScheme={ButtonColorScheme.CYAN_BLACK} 

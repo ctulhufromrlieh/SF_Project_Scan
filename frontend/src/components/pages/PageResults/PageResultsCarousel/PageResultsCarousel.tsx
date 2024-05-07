@@ -13,9 +13,30 @@ interface PageResultsCarouselProps {
 }
 
 const PageResultsCarousel: React.FC<PageResultsCarouselProps> = ({elems}) => {
+
+    const getResponsiveItem = (width: number, count: number) => {
+        return {
+            breakpoint: width,
+            settings: {
+                slidesToShow: count
+            }
+        }
+    }
+
+    const usedCount = Math.min(elems.length, 8);
+    const sliderWidths: number[] = [450, 585, 720, 855, 990, 1125, 1260];    
+    let responsiveSettings = sliderWidths.map((elem, index) => getResponsiveItem(elem, 1 + index));
+    // for (let i = 0; i < 8 - usedCount - 1; i++) {
+    //     responsiveSettings.pop();
+    // }
+    // responsiveSettings = responsiveSettings.filter((value, index) => index < usedCount);
+
+    console.log(responsiveSettings);
+
     const settingsDesktop: Settings = {
         slidesToShow: 8,
         infinite: false,
+        // responsive: responsiveSettings.reverse(),
         responsive: [
             {
                 breakpoint: 1260,
@@ -71,9 +92,12 @@ const PageResultsCarousel: React.FC<PageResultsCarouselProps> = ({elems}) => {
 
     // !!! Evil crutch
     if (elems.length < 8) {
-        settingsDesktop.slidesToShow = elems.length;
+        // settingsDesktop.slidesToShow = elems.length;
         // const deltaX = (8 - elems.length) * 132;
+        const deltaX = (8 - usedCount) * 135;
         // style = {width: 1125 - deltaX};
+        // style = {width: 1260 - deltaX};
+        style = {width: 1260 - deltaX};
         // addOffsetXnext += deltaX;
     }
 
@@ -85,22 +109,18 @@ const PageResultsCarousel: React.FC<PageResultsCarouselProps> = ({elems}) => {
     }
 
     console.log("addElems = ", addElems);
-    // let addElems = [];
-    // if (elems.length < 8) {
-    //     for (let i = elems.length; i < 8; i++)
-    //         addElems.push("");
-    // }
 
-    
 
     return (
+        // <div className={classes.carousel_container} style={style}>
         <div className={classes.carousel_container}>
             <div className={classes.fixed_part}>
                 <p>Период</p>
                 <p>Всего</p>
                 <p>Риски</p>
             </div>
-            <div className={commonClasses.only_desktop} style={style}>
+            {/* <div className={commonClasses.only_desktop} style={style}> */}
+            <div className={commonClasses.only_desktop}>
                 <MySlider 
                     settings={settingsDesktop} 
                     addContainerClassNames={[]} 
@@ -110,13 +130,8 @@ const PageResultsCarousel: React.FC<PageResultsCarouselProps> = ({elems}) => {
                     {elems.map(elem => 
                         <PageResultsCarouselItem key={elem.date.toString()} date={elem.date} all={elem.all} risks={elem.risks} />
                     )}
-                    {addElems.map(elem => 
-                        <PageResultsCarouselItem key={elem} isEmpty={true} />
-                    )}
                     {/* {addElems.map(elem => 
-                        <div>
-
-                        </div>
+                        <PageResultsCarouselItem key={elem} isEmpty={true} />
                     )} */}
                 </MySlider>
             </div>

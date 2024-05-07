@@ -8,11 +8,13 @@ import { NavigateFunction } from "react-router";
 import { createHistogramRequestData } from "../../types/api";
 import { resetDocuments } from "./documents";
 import { resetDocIds } from "./docIds";
+import { checkAuth } from "../../utils/auth";
 
 // export const fetchHistograms = (accessToken: string, typedSelector: TypedUseSelectorHook<RootState>) => {
 export const fetchHistograms = (accessToken: string, navigate: NavigateFunction) => {
     return async (dispatch: Dispatch<HistogramsAction>, getState: () => RootState) => {
         try {
+            checkAuth();
             const searchQuery = getState().searchQuery;
             const isReady = searchQuery.isReady;
             if (!isReady) {

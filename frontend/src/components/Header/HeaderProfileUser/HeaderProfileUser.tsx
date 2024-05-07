@@ -4,6 +4,7 @@ import classes from "./HeaderProfileUser.module.scss";
 
 import profile_user_img from "../../../img/profile_user_img.module.png";
 import { useActions } from "../../../hooks/useActions";
+// import { logout } from "../../../utils/auth";
 
 const HeaderProfileUser: React.FC = () => {
     const { loginUserReset } = useActions();

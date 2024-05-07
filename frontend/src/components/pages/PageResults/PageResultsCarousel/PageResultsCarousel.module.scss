@@ -11,11 +11,17 @@
     // margin: 27px 43px 0 51px;
     margin: 34px 39px 0 38px;
 
+    box-sizing: border-box;
+
     @media screen and (min-width: $mobile_width)  {
         margin: 27px 86px 0 94px;
         padding-left: 133px;
         padding-top: 0;
     }
+
+    // .carousel_container_desktop {
+    //     @include only_desktop;
+    // }
 
     .fixed_part {
         border-radius: 7px 7px 0 0;

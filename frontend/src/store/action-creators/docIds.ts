@@ -3,10 +3,13 @@ import { DocIdsAction, DocIdsActionTypes } from "../../types/docIds";
 import { RootState } from "../reducers";
 import { createHistogramRequestData } from "../../types/api";
 import axios from "axios";
+import { checkAuth } from "../../utils/auth";
 
 export const fetchDocIds = (accessToken: string) => {
     return async (dispatch: Dispatch<DocIdsAction>, getState: () => RootState) => {
         try {
+            checkAuth();
+
             const searchQuery = getState().searchQuery;
             const isReady = searchQuery.isReady;
             if (!isReady) {
