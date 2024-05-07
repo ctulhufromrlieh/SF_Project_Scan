@@ -46,6 +46,10 @@
         }
 
         .source {
+            overflow: hidden;
+            white-space:nowrap;
+            text-overflow: ellipsis; 
+
             font-family: $fontname2;
             font-size: 14px;
             font-weight: 400;
@@ -53,6 +57,7 @@
             letter-spacing: 0.01em;
             color: #949494;
             text-decoration: underline;
+            max-height: 17px;
 
             margin-left: 9px;
             @media screen and (min-width: $mobile_width)  {
@@ -61,6 +66,7 @@
                 letter-spacing: 0.02em;
 
                 margin-left: 14px;
+                max-height: 19px;
             }
         }
     }
@@ -76,7 +82,11 @@
         width: 297px;
         height: 69px;
 
+        // display: -webkit-box; 
+        // -webkit-box-orient: vertical; 
+        // -webkit-line-clamp: 2; 
         overflow: hidden;
+        // white-space:nowrap;
         text-overflow: ellipsis;
 
         @media screen and (min-width: $mobile_width)  {

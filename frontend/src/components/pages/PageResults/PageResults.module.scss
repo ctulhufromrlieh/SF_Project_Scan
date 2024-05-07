@@ -127,8 +127,13 @@
             }
         }
 
-        .carousel {
+        // .carousel {
+        // }
 
+        .carousel_loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         // .carousel_desktop {

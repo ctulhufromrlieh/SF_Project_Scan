@@ -121,11 +121,15 @@ const PageResults = () => {
                     {
                         elems.length > 0 
                         ? 
-                        <div className={classes.carousel}>
+                        // <div className={classes.carousel}>
+                        <div>
                             <PageResultsCarousel elems={elems} />
                         </div>
                         :
-                        <></>
+                        <div className={classes.carousel_loader}>
+                            <Loader />
+                        </div>
+                        // <></>
                         // <div className={classes.carousel}>
                         //     <p className={classes.heading_std}>Нет сводки</p>
                         // </div>

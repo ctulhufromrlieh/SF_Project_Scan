@@ -94,70 +94,11 @@ const checkDate = (date1: string, date2: string): boolean => {
         const d1 = new Date(date1);
         const d2 = new Date(date2);
 
-        return d1 < d2;
+        return (d1 < d2) && (d2.getTime() < Date.now());
     } catch {
         return false;
     }
 }
-
-// export const searchQueryReducer = (state = initialState, action: SearchQueryAction): SearchQueryState => {
-//     switch (action.type) {
-//         case SearchQueryActionTypes.SET_INN:
-//             const newInn = action.payload;
-//             const isInnError = checkInn(newInn);
-//             return {...state, inn: newInn, isInnError: isInnError};
-//         case SearchQueryActionTypes.SET_TONE:
-//             return {...state, tone: action.payload}
-//         case SearchQueryActionTypes.SET_COUNT:
-//             const newCount = parseInt(action.payload);
-//             const IsCountError = checkCount(newCount);
-//             return {...state, count: newCount, isCountError: IsCountError};
-//         // using separate block
-//         case SearchQueryActionTypes.SET_DATE1:{
-//             const date1 = action.payload;
-//             const date2 = state.date2;
-//             const isDateError = checkDate(date1, date2);
-//             return {...state, date1: date1, isDateError: isDateError};
-//         }
-//         // using separate block
-//         case SearchQueryActionTypes.SET_DATE1: {
-//             const date1 = action.payload;
-//             const date2 = state.date2;
-//             const isDateError = checkDate(date1, date2);
-//             return {...state, date1: date1, isDateError: isDateError};
-//         }
-//         case SearchQueryActionTypes.SET_MAX_FULLNESS:
-//             return {...state, maxFullness: action.payload};
-//         case SearchQueryActionTypes.SET_IN_BUSINESS_NEWS:
-//             return {...state, inBusinessNews: action.payload};
-//         case SearchQueryActionTypes.SET_ONLY_MAIN_ROLE:
-//             return {...state, onlyMainRole: action.payload};
-//         case SearchQueryActionTypes.SET_ONLY_WITH_RISK_FACTORS:
-//             return {...state, onlyWithRiskFactors: action.payload};
-//         case SearchQueryActionTypes.SET_EXCLUDE_TECH_NEWS:
-//             return {...state, excludeTechNews: action.payload};
-//         case SearchQueryActionTypes.SET_EXCLUDE_ANNOUNCEMENTS:
-//             return {...state, excludeAnnouncements: action.payload};
-//         case SearchQueryActionTypes.SET_EXCLUDE_DIGESTS:
-//             return {...state, excludeDigests: action.payload};
-//         default:
-//             return state;
-//     }
-// }
-
-// const getIsReady = (state: SearchQueryState): boolean => {
-//     if (!state.inn) {
-//         return false;
-//     }
-//     if (!state.count) {
-//         return false;
-//     }
-//     if (!state.date1 || !state.date2) {
-//         return false;
-//     }
-
-//     return !state.isInnError && !state.isCountError && !state.isDateError;
-// }
 
 const recalcIsReadyReducer = (state: SearchQueryState): SearchQueryState => {
     const isReady = 

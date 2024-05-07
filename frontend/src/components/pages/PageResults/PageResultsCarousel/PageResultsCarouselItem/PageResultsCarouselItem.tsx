@@ -22,24 +22,6 @@ const PageResultsCarouselItem: React.FC<PageResultsCarouselItemProps> = ({date =
         return dateFormat(date, "dd.mm.yyyy");
     }
 
-    // return (
-    //     <div className={classes.container}>
-    //         {!isEmpty 
-    //         ?
-    //         <>
-    //             <div className={classes.item}>
-    //                 <p>{dateToText(date)}</p>
-    //                 <p>{all}</p>
-    //                 <p>{risks}</p>
-    //             </div>
-    //             <div className={classes.line}/>
-    //         </>
-    //         :
-    //         null
-    //         }
-    //     </div>
-    // );
-
     if (isEmpty) {
         return (
             <div className={classes.container}>
