@@ -1,5 +1,12 @@
 @import "../../../../styles/commonTypes.scss";
 
+.carousel_maincontainer_desktop {
+    @include only_desktop_flex;
+    justify-content: center;
+    // width: fit-content;
+    // width: 100vw;
+}
+
 .carousel_container {
     position: relative;
 

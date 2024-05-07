@@ -16,7 +16,7 @@ const PageMainCarousel: React.FC<PageMainCarouselProps> = ({elems}) => {
         slidesToShow: 3,
         responsive: [
             {
-                breakpoint: 700,
+                breakpoint: 800,
                 settings: {
                     slidesToShow: 1,
                 }
