@@ -1,0 +1,171 @@
+@import "../../../styles/commonTypes.scss";
+
+.page {
+    display: flex;
+    flex-direction: column;
+    max-width: 375px;
+    // flex-wrap: wrap;
+
+    // border: 1px solid greenyellow;
+    padding-bottom: 57px;
+
+    @media screen and (min-width: $mobile_width)  {
+        max-width: 1440px;
+        // padding: 24px 0 0 0;
+        // flex-wrap: nowrap;
+        padding-bottom: 109px;
+    }
+
+    .heading_std {
+        font-family: $fontname1;
+        font-size: 28px;
+        font-weight: 900;
+        line-height: 33.6px;
+        letter-spacing: 0.01em;
+        
+        @media screen and (min-width: $mobile_width)  {
+            font-size: 30px;
+            line-height: 36px;
+            letter-spacing: 0.02em;           
+        }
+    }
+
+    .header {
+        display: flex;
+        margin: 25px;
+        flex-wrap: wrap;
+
+        @media screen and (min-width: $mobile_width)  {
+            margin: 20px 103px 0 60px;
+        }
+
+        .header_left {
+            display: flex;
+            flex-direction: column;
+            width: 345px;
+
+            margin-top: 0;
+            
+            @media screen and (min-width: $mobile_width)  {
+                width: 510px;
+
+                margin-top: 44px;
+            }
+
+            .heading_main {
+                font-family: $fontname1;
+                font-size: 28px;
+                font-weight: 900;
+                line-height: 33.6px;
+                letter-spacing: 0.01em;
+                
+                @media screen and (min-width: $mobile_width)  {
+                    font-size: 40px;
+                    line-height: 48px;
+                    letter-spacing: 0.04em;
+                }
+            }
+
+            .sub_heading_description {
+                font-family: $fontname2;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 21.78px;
+
+                margin-top: 21px;
+                width: 345px;
+
+                @media screen and (min-width: $mobile_width)  {
+                    font-size: 20px;
+                    line-height: 24.2px;
+                    letter-spacing: 0.02em;
+                    
+                    margin-top: 36px;
+                    width: 440px;
+                }
+            }
+        }
+
+        .header_right {
+            .header_right_image_container_desktop {
+                @include only_desktop_flex;
+            }
+
+            .header_right_image_container_mobile {
+                @include only_mobile_flex;
+            }
+        }
+    }
+
+    .summary {
+        margin-top: 59px;
+        // margin: 59px 0 0 0;
+        @media screen and (min-width: $mobile_width)  {
+            margin-top: -18px;
+            // margin: -18px 43px 0 60px;
+        }
+
+        .summary_header {
+            margin: 0 26px 0 14px;
+            @media screen and (min-width: $mobile_width)  {
+                margin: 0 43px 0 60px;
+            }
+
+            .summary_caption {
+                font-family: $fontname2;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 21.78px;
+                letter-spacing: 0.01em;
+                color: #949494;
+                margin-top: 10px;
+                
+                @media screen and (min-width: $mobile_width)  {
+                    letter-spacing: 0.02em;
+                    margin-top: 17px;
+                }
+            }
+        }
+
+        // .carousel {
+        // }
+
+        .carousel_loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        // .carousel_desktop {
+        //     @include only_desktop;
+        // }
+
+        // .carousel_mobile {
+        //     @include only_mobile;
+        // }
+    }
+
+    .documents {
+        margin: 57px 26px 0 14px;
+
+        @media screen and (min-width: $mobile_width)  {
+            margin: 107px 60px 0 60px;
+        }
+
+        .more_btn_container {
+            display: flex;
+            justify-content: center;
+
+            .more_btn {
+                width: 335px;
+                height: 59px;
+                margin-top: 36px;
+                @media screen and (min-width: $mobile_width)  {
+                    width: 305px;
+                    margin-top: 38px;
+                }
+            }
+        }
+
+    }
+}

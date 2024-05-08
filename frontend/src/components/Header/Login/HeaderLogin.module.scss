@@ -1,0 +1,42 @@
+// @import "consts.scss";
+// @import "../../styles/consts.scss";
+@import "../../../styles/commonTypes.scss";
+
+.main {    
+    display:flex; 
+    flex-direction:row;      
+    align-items: center;
+
+    font-size: 14px;
+    font-family: $fontname2;
+
+    margin-right: 60px;
+
+    // border: 1px solid orange;
+}
+
+.signup_link {
+    color: rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+}
+
+.vertical_line {
+    width: 2px;
+    height: 26px;
+    background-color: $color_teal;
+    margin-left: 18px;
+    margin-right: 20px;
+}
+
+.signin_button {
+    cursor: pointer;
+
+    background-color: $color_cyan;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 10px 5px 12px;
+
+    font-size: 14px;
+    font-family: $fontname2;
+    font-weight: 500;    
+}

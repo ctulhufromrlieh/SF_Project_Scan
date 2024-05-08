@@ -1,0 +1,46 @@
+@import "../../../styles/commonTypes.scss";
+
+.user_data {
+    // display:flex; 
+    @include only_desktop_flex;
+    flex-direction:row;      
+    justify-content: space-between;
+    align-items: center;    
+}
+
+// @media screen and (max-width: $mobile_width)  {
+//     .user_data {   
+//         visibility: hidden;
+//         display:none
+//     }    
+// }
+
+.user_data_left {
+    // border: 1px green solid;
+
+    display:flex; 
+    flex-direction:column;      
+    justify-content: space-between;
+    align-items: end;    
+    
+    padding-top: 30px;
+    padding-bottom: 31px;
+    height: 100%;
+    margin-right: 4px;
+}
+
+.user_name {
+    font-size: 14px;
+    font-family: $fontname2;
+    margin-bottom: 0px;
+}
+
+.logout_link {
+    cursor: pointer;
+
+    font-size: 12px;
+    font-family: $fontname2;
+
+    color: rgba(0, 0, 0, 0.4);
+    text-decoration: none;    
+}

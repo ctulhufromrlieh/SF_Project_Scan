@@ -1,0 +1,72 @@
+@import "../../../../../styles/commonTypes.scss";
+
+.why_we_reason_container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 10px;
+    // padding: 0 15px;
+
+    // border: 1px solid green;
+
+    width: 328px;
+    height: 218px;
+    @media screen and (min-width: $mobile_width)  {
+        width: 430px;
+        height: 255px;
+    }
+}
+
+.why_we_reason {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: left;
+
+    max-width: 298px;
+    height: 188px;
+    // height: 218px; // +30 px top because shadow
+    @media screen and (min-width: $mobile_width)  {
+        max-width: 400px;
+        height: 225px;
+        // height: 255px; // +30 px top because shadow
+    }
+
+    background-color: $color_white;
+
+    // margin-left: 15px;
+    // margin-right: 15px;
+    // margin: 30px;
+
+    // border: 1px solid red;
+
+    box-shadow: 0px 0px 10px 0px #00000033;
+    border-radius: 10px;   
+}
+
+.why_we_reason_image_container {
+    width: 64px;
+    height: 64px;
+    // padding-top: 30px;
+    margin: 30px 0 0 18px;
+    // margin: 60px 0 0 18px;  // +30 px top because shadow
+    @media screen and (min-width: $mobile_width)  {
+        // margin: 30px 0 0 20px;
+        // margin: 60px 0 0 20px;  // +30 px top because shadow
+    }
+}
+
+.why_we_reason_text {
+    font-family: $fontname2;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.78px;
+    letter-spacing: 0.01em;
+    text-align: left;
+
+    max-width: 260px;
+    margin: 19px 0 0 18px;
+    @media screen and (min-width: $mobile_width)  {
+        max-width: 360px;
+        margin: 19px 0 0 20px;
+    }    
+}

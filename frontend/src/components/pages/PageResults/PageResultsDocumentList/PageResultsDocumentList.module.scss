@@ -1,0 +1,13 @@
+@import "../../../../styles/commonTypes.scss";
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 20px;
+    column-gap: 38px;
+    margin-top: 34px;
+    @media screen and (min-width: $mobile_width)  {
+        margin-top: 58px;
+    }
+}

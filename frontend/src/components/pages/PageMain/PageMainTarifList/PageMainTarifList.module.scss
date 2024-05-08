@@ -1,0 +1,15 @@
+@import "../../../../styles/commonTypes.scss";
+
+.list {    
+    display: flex;
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+    // flex-direction: column;
+    row-gap: 43px;
+    margin-top: 37px;
+    @media screen and (min-width: $mobile_width)  {
+        // flex-direction: row;        
+        margin-top: 70px;
+    } 
+}
